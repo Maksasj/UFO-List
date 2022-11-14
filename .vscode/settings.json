@@ -1,0 +1,13 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "clang-format.style": "file",
+    "clang-format.language.c.enable": true,
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true
+    }
+}
