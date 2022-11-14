@@ -1,3 +1,9 @@
+Navigation:
+
+1. [How to build project](#project-build)
+2. [How to run tests](#run-tests)
+3. [VSCODE extensions that has to be installed](#vscode-extensions)
+
 ## Project build
 
 ### Prerequisites:
@@ -25,12 +31,16 @@ TODO: add separate builds for debug and release
 
 3. main.exe will appear in `build/main` directory
 
-### Run tests
+## Run tests
 
-In order to run all tests at once - run this command in `build` directory:
+In order to run all tests at once - build the project and run this command in `build` directory:
 
 ```shell
 ctest
 ```
 
 TODO: update tests documentation after adding gclados
+
+## VSCODE extensions
+
+1. [xaver.clang-format](https://github.com/xaverh/vscode-clang-format) (`clang-format` must be installed on your computer as an executable. Download full [LLVM package](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.2))
