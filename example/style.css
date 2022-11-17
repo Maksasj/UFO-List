@@ -14,9 +14,9 @@ body {
 .header {
     color: white;
     font-family: 'Poppins', sans-serif;
-    font-size: 50px;
+    font-size: 72px;
 
     position: absolute;
-    top: 640px;
-    left: 50px;
+    top: 508px;
+    left: 158px;
 }
