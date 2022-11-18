@@ -1,3 +1,67 @@
 body {
     background-image: url("./assets/Background.png");
 }
+
+.hello {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.profile-photo {
+    width: 48px;
+    height: 48px;
+}
+
+.title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    width: 250px;
+    height: 114px;
+    color: white;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    color: white;
+}
+
+.bold-text {
+    font-size: 15px;
+    font-family: Poppins;
+    font-weight: bold;
+}
+
+.normal-text {
+    font-size: 15px;
+    font-family: Poppins;
+}
+
+.last-time-seen {
+    align-items: center;
+    display: flex;
+    justify-content: left;
+}
+
+.adress {
+    align-items: center;
+    display: flex;
+    justify-content: left;
+}
+
+.identification-traits {
+    align-items: center;
+    display: flex;
+    justify-content: left;
+}
+
+.situation {
+    align-items: center;
+    display: flex;
+    justify-content: left;
+}
