@@ -1,3 +1,10 @@
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
 body {
     background-image: url("./assets/Background.png");
 }
@@ -64,4 +71,16 @@ body {
     align-items: center;
     display: flex;
     justify-content: left;
+    background-repeat: no-repeat;
+    height: 2234px;
+}
+
+.header {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 72px;
+
+    position: absolute;
+    top: 508px;
+    left: 158px;
 }
