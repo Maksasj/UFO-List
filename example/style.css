@@ -62,7 +62,7 @@ body {
 }
 
 .identification-traits {
-    align-items: center;
+    flex-direction: column;
     display: flex;
     justify-content: left;
 }
@@ -73,6 +73,16 @@ body {
     justify-content: left;
     background-repeat: no-repeat;
     height: 2234px;
+}
+
+.id-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.id-content {
+    display: none;
 }
 
 .header {
