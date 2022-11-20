@@ -1,96 +1,108 @@
 html,
 body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
+	margin: 0;
+	width: 100%;
+	height: 100%;
 }
 
 body {
-    background-image: url("./assets/Background.png");
-}
-
-.hello {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
+	background-image: url("./assets/Background.png");
 }
 
 .profile-photo {
-    width: 48px;
-    height: 48px;
+	width: 48px;
+	height: 48px;
 }
 
 .title {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
 }
 
 .container {
-    width: 250px;
-    height: 114px;
-    color: white;
+	width: 250px;
+	height: 114px;
+	color: white;
 }
 
 .icon {
-    width: 16px;
-    height: 16px;
-    color: white;
+	width: 16px;
+	height: 16px;
+	color: white;
+}
+
+.person-name {
+	font-family: Poppins;
+	font-weight: bold;
 }
 
 .bold-text {
-    font-size: 15px;
-    font-family: Poppins;
-    font-weight: bold;
+	font-size: 15px;
+	font-family: Poppins;
+	font-weight: bold;
 }
 
 .normal-text {
-    font-size: 15px;
-    font-family: Poppins;
+	font-size: 15px;
+	font-family: Poppins;
+	font-weight: normal;
 }
 
 .last-time-seen {
-    align-items: center;
-    display: flex;
-    justify-content: left;
+	align-items: center;
+	display: flex;
+	justify-content: left;
 }
 
 .adress {
-    align-items: center;
-    display: flex;
-    justify-content: left;
+	align-items: center;
+	display: flex;
+	justify-content: left;
 }
 
 .identification-traits {
-    flex-direction: column;
-    display: flex;
-    justify-content: left;
+	flex-direction: column;
+	display: flex;
+	justify-content: left;
 }
 
 .situation {
-    align-items: center;
-    display: flex;
-    justify-content: left;
-    background-repeat: no-repeat;
-    height: 2234px;
+	flex-direction: column;
+	display: flex;
+	justify-content: left;
 }
 
 .id-header {
-    width: 100%;
-    display: flex;
-    align-items: center;
+	width: 100%;
+	display: flex;
+	align-items: center;
 }
 
 .id-content {
-    display: none;
+	display: none;
+}
+
+.sit-header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.sit-content {
+	display: none;
+}
+
+.show {
+	display: block;
 }
 
 .header {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 72px;
+	color: white;
+	font-family: "Poppins", sans-serif;
+	font-size: 72px;
 
-    position: absolute;
-    top: 508px;
-    left: 158px;
+	position: absolute;
+	top: 508px;
+	left: 158px;
 }
