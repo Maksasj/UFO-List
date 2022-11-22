@@ -29,6 +29,15 @@ cmake --build build
 
 TODO: add separate builds for debug and release
 
+### Troubleshooting 
+
+If cmake detects wrong compiler(probably devkitadv one), try to manually specify path to your compiler in *CMakeLists.txt* file, like so
+
+```
+set(CMAKE_C_COMPILER "PATH TO C COMPILER")
+set(CMAKE_CXX_COMPILER "PATH TO C++ COMPILER")
+```
+
 3. main.exe will appear in `build/main` directory
 
 ## Run tests
