@@ -42,6 +42,7 @@ body {
 	width: 100%;
 	position: absolute;
 	top: 2200px;
+	z-index: -1;
     background-image: linear-gradient(rgb(0,0,25), black);
 }
 
@@ -60,6 +61,8 @@ body {
 .cards-container {
 	display: flex;
 	justify-content: center;
+	margin-left: 150px;
+	margin-right: 150px;
 }
 
 .cards {
