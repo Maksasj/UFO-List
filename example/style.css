@@ -7,6 +7,7 @@ body {
 
 body {
 	background-image: url("./assets/Background.png");
+	background-repeat: no-repeat;
 }
 
 .profile-photo {
@@ -35,6 +36,7 @@ body {
 	border-radius: 25px;
 	border-width: 1px;
 	border-color: rgb(255, 255, 255, 0.3);
+	margin: 30px;
 }
 
 .icon {
@@ -120,4 +122,13 @@ body {
 	position: absolute;
 	top: 508px;
 	left: 158px;
+}
+
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 0 40px;
+	position: absolute;
+	top: 1000px;
 }
