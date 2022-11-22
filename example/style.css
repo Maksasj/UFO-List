@@ -1,25 +1,48 @@
 html,
 body {
 	margin: 0;
-	width: 100%;
-	height: 100%;
 }
 
 body {
 	background-image: linear-gradient(to right, rgb(0,0,0), rgb(0,0,0));
-}
-
-.center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	display: flex;
+	justify-content: center;
 }
 
 .page-container {
+	box-shadow: 0px 0px 80px 75px rgba(14, 20, 34);
 	width: 1728px;
-	height: 3000px;
+	height: 2200px;
+	background-image: url(assets/Background.png);
+	background-position: top;
+	background-repeat: no-repeat;
 	position: relative;
-	box-shadow:0px 0px 80px 75px rgba(14, 20, 34);
+}
+
+.title-text {
+	color: white;
+	font-family: "Poppins", sans-serif;
+	font-size: 72px;
+	font-weight: bold;
+}
+
+.main-title {
+	margin-top: 500px;
+	margin-left: 150px;
+}
+
+#lost {
+	margin-top: 500px;
+	margin-left: 150px;
+}
+
+/* FIXME: 1000px may not be enough for cards container */
+#gradient {
+    height: 1000px;
+	width: 100%;
+	position: absolute;
+	top: 2200px;
+    background-image: linear-gradient(rgb(0,0,25), black);
 }
 
 .profile-photo {
@@ -32,6 +55,12 @@ body {
 	display: flex;
 	justify-content: space-between;
 	padding: 3px;
+}
+
+.cards {
+	display: flex;
+	gap: 50px;
+	flex-wrap: wrap;
 }
 
 .container {
@@ -99,20 +128,15 @@ body {
 	justify-content: left;
 }
 
-.id-header {
-	width: 100%;
-	display: flex;
-	align-items: center;
-}
-
 .id-content {
 	display: none;
 }
 
-.sit-header {
+.contents-trigger {
 	width: 100%;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .sit-content {
@@ -122,35 +146,4 @@ body {
 .show {
 	display: block;
 	padding-left: 24px;
-}
-
-.title-text {
-	color: white;
-	font-family: "Poppins", sans-serif;
-	font-size: 72px;
-	font-weight: bold;
-}
-
-.block {
-	position:absolute;
-	top: 0;
-	left: 0;
-	z-index: 2;
-}
-
-#title {
-    padding-left: 150px;
-    padding-top: 500px;
-}
-
-#lost {
-	padding-left: 150px;
-	padding-top: 1200px;
-}
-
-#gradient {
-    height: 1000px;
-	width: 1728px;
-	margin-top: 2200px;
-    background-image: linear-gradient(rgb(0,0,25), black);
 }
