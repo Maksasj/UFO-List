@@ -1,21 +1,21 @@
-function triggerTraits() {
-	const contentsElement = document.getElementById("traits-content");
-	if (contentsElement.classList.contains("show")) {
-		contentsElement.classList.remove("show");
-	} else {
-		contentsElement.classList.add("show");
-	}
-}
-document.getElementById("traits").addEventListener("click", triggerTraits);
+function registerShowListeners(triggerId, contentId) {
+	const triggers = document.querySelectorAll(`#${triggerId}`);
+	const contents = document.querySelectorAll(`#${contentId}`);
 
-function triggerSituation() {
-	const contentsElement = document.getElementById("situation-content");
-	if (contentsElement.classList.contains("show")) {
-		contentsElement.classList.remove("show");
-	} else {
-		contentsElement.classList.add("show");
+	function trigger(element) {
+		if (element.classList.contains("show")) {
+			element.classList.remove("show");
+		} else {
+			element.classList.add("show");
+		}
+	}
+
+	for (let i = 0; i < triggers.length; ++i) {
+		triggers[i].addEventListener("click", () => {
+			trigger(contents[i]);
+		})
 	}
 }
-document
-	.getElementById("situation")
-	.addEventListener("click", triggerSituation);
+
+registerShowListeners("traits-trigger", "traits-content")
+registerShowListeners("situation-trigger", "situation-content")
