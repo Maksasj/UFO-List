@@ -31,7 +31,7 @@ body {
 	margin-left: 150px;
 }
 
-#lost {
+.lost {
 	margin-top: 500px;
 	margin-left: 150px;
 }
@@ -55,6 +55,11 @@ body {
 	display: flex;
 	justify-content: space-between;
 	padding: 3px;
+}
+
+.cards-container {
+	display: flex;
+	justify-content: center;
 }
 
 .cards {
