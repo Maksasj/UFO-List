@@ -1,8 +1,8 @@
-#include "module.h"
+#include "html-generator.h"
 #include <assert.h>
 
 int main() {
-    printHelloWorld();
+    test();
     assert(1 == 1);
     return 0;
 }

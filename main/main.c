@@ -1,6 +1,6 @@
-#include "module.h"
+#include "html-generator.h"
 
 int main() {
-    printHelloWorld();
+    test();
     return 0;
 }
