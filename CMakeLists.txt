@@ -5,5 +5,4 @@ enable_testing()
 
 add_subdirectory(main)
 
-add_subdirectory(module/src)
-add_subdirectory(module/test)
+add_subdirectory(modules)
