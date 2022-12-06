@@ -1,8 +1,8 @@
+#include "gclados.h"
 #include "html-generator.h"
-#include <assert.h>
 
-int main() {
-    test();
-    assert(1 == 1);
-    return 0;
+// Hello
+TEST(test_zero_values_1) {
+    ensure(0, gclados.toBeFalsy());
+    ensure(1, gclados.toBeTruthy());
 }
