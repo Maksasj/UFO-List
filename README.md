@@ -1,44 +1,11 @@
-Navigation:
+## Getting started
 
-1. [How to build project](#project-build)
-2. [How to run tests](#run-tests)
-3. [VSCODE extensions that has to be installed](#vscode-extensions)
+For build instructions see [BUILD.md](./BUILD.md) file
 
-## Project build
+## Navigation:
 
-### Prerequisites:
-
--   [Cmake](https://cmake.org/download/) executable
--   [Ninja](https://github.com/ninja-build/ninja/releases) executable
-
-Add paths to these executables in `PATH` environment variable.
-
-### Steps to build:
-
-1. Run this command in project root. This will generate cmake configurations.
-
-```shell
-cmake -B build -G Ninja
-```
-
-2. Run this command in project root. This will build the project.
-
-```shell
-cmake --build build
-```
-
-TODO: add separate builds for debug and release
-
-3. main.exe will appear in `build/main` directory
-
-### Troubleshooting
-
-If cmake detects wrong compiler(probably devkitadv one), try to manually specify path to your compiler in _CMakeLists.txt_ file, like so
-
-```
-set(CMAKE_C_COMPILER "PATH TO C COMPILER")
-set(CMAKE_CXX_COMPILER "PATH TO C++ COMPILER")
-```
+1. [How to run tests](#run-tests)
+2. [VSCODE extensions that has to be installed](#vscode-extensions)
 
 ## Run tests
 
