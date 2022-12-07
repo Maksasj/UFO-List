@@ -9,13 +9,21 @@ For build instructions see [BUILD.md](./BUILD.md) file
 
 ## Run tests
 
-In order to run all tests at once - build the project and run this command in `build` directory:
+1. Firstly, you need to clone [gclados repository](https://github.com/ArtiomTr/gclados) on your machine.
 
 ```shell
-ctest
+git clone https://github.com/ArtiomTr/gclados.git
 ```
 
-TODO: update tests documentation after adding gclados
+2. Next, follow [gclados build instructions for release](https://github.com/ArtiomTr/gclados/blob/master/BUILD.md#release)
+
+3. Then, `gclados.exe` will appear in `bin` directory. Next, move this executable somewhere on the disk, for example in `C:\Program Files\GcLaDOS\bin`, and add this directory in `PATH` environment variable.
+
+4. To check if everything is fine, type this command in terminal (if executable was found, you won't get an error):
+
+```shell
+gclados
+```
 
 ## VSCODE extensions
 

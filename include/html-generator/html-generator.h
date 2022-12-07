@@ -21,11 +21,9 @@ void freeNode(Node *node);
 // Helper functions
 Node *initDefaultHTMLNode();
 
-void test();
-
 // Example usage:
 // int main() {
-//     Node *htmlNode = initNode("hmtl", "");
+//     Node *htmlNode = initNode("html", "");
 //     Node *bodyNode = pushChildrenNode(htmlNode, "body", "");
 //     Node *container = pushChildrenNode(bodyNode, "div",
 //     "class=\"container\"");
@@ -35,5 +33,7 @@ void test();
 //         fprintf(file, "%s", renderToString(htmlNode));
 //     }
 // }
+
+void test();
 
 #endif
