@@ -1,11 +1,8 @@
 file(GLOB SRC_FILES *.test.c)
 
-find_program(GCLADOS "gclados")
-if(GCLADOS)
-    add_custom_command(
-            OUTPUT ./entry.c
-            COMMAND gclados generate ./*.test.c --output ./entry.c
-            DEPENDS ${SRC_FILES}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    )
-endif()
+add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/entry.c
+    COMMAND gclados generate ${CMAKE_CURRENT_SOURCE_DIR}/*.test.c --output ${CMAKE_CURRENT_SOURCE_DIR}/entry.c
+    DEPENDS ${SRC_FILES}
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+)

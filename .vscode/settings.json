@@ -12,6 +12,9 @@
 	},
 	"files.associations": {
 		"html-generator.h": "c",
-		"gclados.h": "c"
+		"gclados.h": "c",
+		"chashmap.h": "c",
+		"type_traits": "c",
+		"xtr1common": "c"
 	}
 }

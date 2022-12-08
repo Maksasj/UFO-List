@@ -6,9 +6,9 @@ int main() {
     gcladosColors.setColorsSupported(true);
     gcladosSetUpdateSnapshots(false);
     GcladosTest gcladosTests0[] = {
-        __gcladosTest_test_zero_values_1("Hello"),
+        __gcladosTest_test_zero_values_1("Hello poggers"),
     };
-    GcladosTestSuite gcladosTestSuite0 = gcladosCreateTestSuite("/cygdrive/c/Programming/c/Ufo-list/modules/html-generator/test/html-generator.test.c", gcladosTests0, 1);
+    GcladosTestSuite gcladosTestSuite0 = gcladosCreateTestSuite("/cygdrive/c/Programming/c/Ufo-list/modules/chashmap/test/chashmap.test.c", gcladosTests0, 1);
     GcladosTestSuite gcladosTestSuites[] = {
         gcladosTestSuite0,
     };
