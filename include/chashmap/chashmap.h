@@ -1,14 +1,14 @@
 #ifndef CHASHMAP_H
 #define CHASHMAP_H
 
-#define DEFAULT_SEGMENT_LENGTH 100
+#define DEFAULT_SEGMENT_LENGTH 10
 
 #include <stdlib.h>
 #include <string.h>
 
 typedef struct HashmapEntry {
     char* key;
-    void* value;
+    char* value;
 
     /* Pointer to next element */
     void* next;

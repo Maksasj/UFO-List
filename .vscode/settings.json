@@ -16,6 +16,7 @@
 		"chashmap.h": "c",
 		"type_traits": "c",
 		"xtr1common": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"stdio.h": "c"
 	}
 }
