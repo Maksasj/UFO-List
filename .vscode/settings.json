@@ -15,6 +15,7 @@
 		"gclados.h": "c",
 		"chashmap.h": "c",
 		"type_traits": "c",
-		"xtr1common": "c"
+		"xtr1common": "c",
+		"stdlib.h": "c"
 	}
 }
