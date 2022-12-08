@@ -5,4 +5,8 @@ add_custom_command(
     COMMAND gclados generate ${CMAKE_CURRENT_SOURCE_DIR}/*.test.c --output ${CMAKE_CURRENT_SOURCE_DIR}/entry.c
     DEPENDS ${SRC_FILES}
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+<<<<<<< HEAD
 )
+=======
+)
+>>>>>>> b9794a7b2319e4b954f9183c61515e55891f6253
