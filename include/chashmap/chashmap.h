@@ -1,6 +1,8 @@
 #ifndef CHASHMAP_H
 #define CHASHMAP_H
 
+#define DEFAULT_SEGMENT_LENGTH 100
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -14,10 +16,10 @@ typedef struct HashmapEntry {
 
 typedef struct Hashmap {
     /* Amount of elements in HashmapEntry*/
-    const long segment_length;
+    long segment_length;
 
     /* Actual array of hashmap entries */
-    void* HashmapEntry;
+    void** HashmapEntries;
 
     /* Byte size */
     size_t size;
