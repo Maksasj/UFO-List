@@ -1,5 +1,4 @@
 #include "chashmap.h"
-#include <stdio.h>
 
 void* mapInsert(Hashmap* map, char* key, char* value) {
     unsigned int hash = chashmapHash(key) % map->segment_length;

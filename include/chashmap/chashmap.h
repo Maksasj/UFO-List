@@ -1,7 +1,7 @@
 #ifndef CHASHMAP_H
 #define CHASHMAP_H
 
-#define DEFAULT_SEGMENT_LENGTH 10
+#define DEFAULT_SEGMENT_LENGTH 100
 
 #include <stdlib.h>
 #include <string.h>
@@ -32,7 +32,7 @@ void mapInit(Hashmap* map);
 
 void* mapInsert(Hashmap* map, char* key, char* value);
 
-void mapGetValue(Hashmap* map, char* key);
+void* mapGetValue(Hashmap* map, char* key);
 
 int mapKeyExist(Hashmap* map, char* key);
 

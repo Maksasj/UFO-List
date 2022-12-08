@@ -1,6 +1,5 @@
 #include "chashmap.h"
 #include <string.h>
-#include <stdio.h>
 
 void* mapGetValue(Hashmap* map, char* key) {
     unsigned int hash = chashmapHash(key) % map->segment_length;
@@ -8,14 +7,14 @@ void* mapGetValue(Hashmap* map, char* key) {
     HashmapEntry* prev = map->HashmapEntries[hash];
 
     while (1) {
-        if(prev == NULL)
-            return NULL;
-
         if(strcmp(prev->key, key) == 0)
             return prev->value;
 
+        if(prev->next == NULL)
+            return NULL;
+
         prev = prev->next;
     }
-
+    
     return NULL;
 }
