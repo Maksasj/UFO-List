@@ -1,12 +1,15 @@
 #ifndef CHASHMAP_H
 #define CHASHMAP_H
 
+#include <stdlib.h>
+#include <string.h>
+
 typedef struct HashmapEntry {
     char* key;
     void* value;
 
     /* Pointer to next element */
-    HashmapEntry* next;
+    void* next;
 } HashmapEntry;
 
 typedef struct Hashmap {
@@ -33,7 +36,7 @@ int mapKeyExist(Hashmap* map, char* key);
 
 void mapFree(Hashmap* map);
 
-void chashmap_hash(const char* key);
+unsigned int chashmapHash(const char* key);
 
 /*
 Hashmap hm;
