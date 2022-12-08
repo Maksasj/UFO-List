@@ -2,7 +2,6 @@
 #include "chashmap.h"
 
 int main() {
-    test();
-    ctest();
+    printf("hello world!");
     return 0;
 }
