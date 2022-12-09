@@ -40,6 +40,19 @@ void mapFree(Hashmap* map);
 
 unsigned int chashmapHash(const char* key);
 
+HashmapEntry* getNextEntry(Hashmap* map);
+
+#define FOREACH_ENTRY(MAP, ENTRY)                       \
+    HashmapEntry* ENTRY;                                \
+    while((ENTRY = getNextEntry(&hm)) && ENTRY != NULL) \
+
+/*
+#define FOREACH_ENTRY(MAP, ENTRY)                   \
+    while(1) {                                  \
+    HashmapEntry* ENTRY = getNextEntry(&MAP);   \
+    if(ENTRY == NULL) break;                    \
+*/
+
 /*
 Hashmap hm;
 mapInit(&hm);
@@ -51,6 +64,8 @@ mapFree()
 char* value = mapGet(&hm, "key1");
 
 mapKeyExist(&hm, "key2");
+
+getNextEntry(&hm)
 
 */
 
