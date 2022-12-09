@@ -3,7 +3,6 @@
 
 int main() {
     Hashmap hm;
-
     mapInit(&hm);
 
     mapInsert(&hm, "pooggers", "value1");
@@ -19,6 +18,12 @@ int main() {
 
     // >hello world
     printf("%s \n", helloWorld);
+
+    if(mapKeyExist(&hm, "pooggers"))
+        printf("Key pooggers exist \n");
+
+    if(!mapKeyExist(&hm, "pooogers"))
+        printf("Key pooogers does not exist \n");
 
     return 0;
 }
