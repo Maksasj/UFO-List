@@ -46,26 +46,36 @@ HashmapEntry* getNextEntry(Hashmap* map);
     HashmapEntry* ENTRY;                                \
     while((ENTRY = getNextEntry(&hm)) && ENTRY != NULL) \
 
-/*
-#define FOREACH_ENTRY(MAP, ENTRY)                   \
-    while(1) {                                  \
-    HashmapEntry* ENTRY = getNextEntry(&MAP);   \
-    if(ENTRY == NULL) break;                    \
-*/
+/*  USAGE EXAMPLE
 
-/*
-Hashmap hm;
-mapInit(&hm);
+    Hashmap hm;
+    mapInit(&hm);
+
     mapInsert(&hm, "key1", "value1");
     mapInsert(&hm, "key2", "value2");
     mapInsert(&hm, "key3", "value3");
-mapFree()
+    mapInsert(&hm, "key4", "value4");
+    mapInsert(&hm, "key5", "value5");
+    mapInsert(&hm, "key6", "value6");
+    mapInsert(&hm, "key7", "value7");
+    mapInsert(&hm, "key8", "value8");
+    mapInsert(&hm, "key9", "value9");
+    mapInsert(&hm, "key10", "value10");
+    mapInsert(&hm, "key11", "value11");
+    mapInsert(&hm, "key12", "value12");
 
-char* value = mapGet(&hm, "key1");
+    char* value = mapGetValue(&hm, "pooggers");
+    char* helloWorld = mapGetValue(&hm, "key1");
 
-mapKeyExist(&hm, "key2");
+    FOREACH_ENTRY(hm, entry) {
+        printf("%s \n", entry->key);
+    }
 
-getNextEntry(&hm)
+    if(mapKeyExist(&hm, "pooggers"))
+        printf("Key pooggers exist \n");
+
+    if(!mapKeyExist(&hm, "pooogers"))
+        printf("Key pooogers does not exist \n");
 
 */
 
