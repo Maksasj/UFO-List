@@ -13,7 +13,7 @@ void mapEntryFree(HashmapEntry* entry) {
 }
 
 void mapFree(Hashmap* map) {
-    for(int i = 0; i < map->segment_length; ++i) {
+    for(int i = 0; i < DEFAULT_SEGMENT_LENGTH; ++i) {
         HashmapEntry* entry = map->HashmapEntries[i];
         if(entry != NULL) {
             mapEntryFree(entry);   

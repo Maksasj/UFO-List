@@ -24,8 +24,9 @@ static inline void initEntryTo(HashmapEntry* to, char* key, char* value) {
     strcpy(entry->value, value);
 }
 
-void* mapInsert(Hashmap* map, char* key, char* value) {
-    unsigned int hash = chashmapHash(key) % map->segment_length;
+HashmapEntry* mapInsert(Hashmap* map, char* key, char* value) {
+    unsigned int hash = chashmapHash(key) % DEFAULT_SEGMENT_LENGTH;
+    ++map->length;
 
     if(map->HashmapEntries[hash] == NULL) {
         HashmapEntry* entry = initEntry(key, value);
@@ -48,6 +49,6 @@ void* mapInsert(Hashmap* map, char* key, char* value) {
         }
 
         prev = prev->next;
-    }    
+    }
     return NULL;
 }

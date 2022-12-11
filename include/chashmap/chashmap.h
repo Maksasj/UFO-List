@@ -11,18 +11,11 @@ typedef struct HashmapEntry {
     char* value;
 
     /* Pointer to next element */
-    void* next;
+    struct HashmapEntry* next;
 } HashmapEntry;
 
 typedef struct Hashmap {
-    /* Amount of elements in HashmapEntry*/
-    long segment_length;
-
-    /* Actual array of hashmap entries */
-    void** HashmapEntries;
-
-    /* Byte size */
-    size_t size;
+    HashmapEntry** HashmapEntries;
 
     /* Amount of elements */
     size_t length;
@@ -30,7 +23,7 @@ typedef struct Hashmap {
 
 void mapInit(Hashmap* map);
 
-void* mapInsert(Hashmap* map, char* key, char* value);
+HashmapEntry* mapInsert(Hashmap* map, char* key, char* value);
 
 void* mapGetValue(Hashmap* map, char* key);
 
