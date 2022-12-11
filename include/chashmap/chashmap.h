@@ -1,7 +1,7 @@
 #ifndef CHASHMAP_H
 #define CHASHMAP_H
 
-#define DEFAULT_SEGMENT_LENGTH 100
+#define KEY_HASH_LENGTH 100
 
 #include <stdlib.h>
 #include <string.h>

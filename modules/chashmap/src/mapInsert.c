@@ -25,7 +25,7 @@ static inline void initEntryTo(HashmapEntry* to, char* key, char* value) {
 }
 
 HashmapEntry* mapInsert(Hashmap* map, char* key, char* value) {
-    unsigned int hash = chashmapHash(key) % DEFAULT_SEGMENT_LENGTH;
+    unsigned int hash = chashmapHash(key) % KEY_HASH_LENGTH;
     ++map->length;
 
     if(map->HashmapEntries[hash] == NULL) {

@@ -9,7 +9,7 @@ HashmapEntry* getNextEntry(Hashmap* map) {
     if(lastMap == NULL) { 
         lastMap = map;
 
-        for(int i = 0; i < DEFAULT_SEGMENT_LENGTH; ++i) {
+        for(int i = 0; i < KEY_HASH_LENGTH; ++i) {
             if(lastMap->HashmapEntries[i] != NULL) {
                 lastSegement = i + 1;
                 lastEntry = lastMap->HashmapEntries[i]; 
@@ -23,7 +23,7 @@ HashmapEntry* getNextEntry(Hashmap* map) {
         return lastEntry;
     }
 
-    for(int i = lastSegement; i < DEFAULT_SEGMENT_LENGTH; ++i) {
+    for(int i = lastSegement; i < KEY_HASH_LENGTH; ++i) {
         if(lastMap->HashmapEntries[i] != NULL) {
             lastSegement = i + 1;
             lastEntry = lastMap->HashmapEntries[i]; 

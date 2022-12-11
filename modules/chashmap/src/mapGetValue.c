@@ -2,7 +2,7 @@
 #include <string.h>
 
 void* mapGetValue(Hashmap* map, char* key) {
-    unsigned int hash = chashmapHash(key) % DEFAULT_SEGMENT_LENGTH;
+    unsigned int hash = chashmapHash(key) % KEY_HASH_LENGTH;
 
     HashmapEntry* prev = map->HashmapEntries[hash];
 
