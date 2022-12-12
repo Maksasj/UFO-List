@@ -6,9 +6,10 @@
 
 typedef enum { HTML_TAG, STRING_LITERAL } NodeType;
 
-typedef struct {
+typedef struct Node {
     struct Node *children;
     size_t childrenSize;
+    size_t childrenCapacity;
 
     NodeType nodeType;
     char *tag;
@@ -19,6 +20,7 @@ typedef struct {
         in attributes, like "value=string"
     */
     char *attributes;
+    char *value;
 } Node;
 
 // Core API

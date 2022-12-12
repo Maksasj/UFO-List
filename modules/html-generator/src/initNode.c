@@ -7,11 +7,13 @@ Node *initNode(char *tag, char *attributes) {
 
     node->children = NULL;
     node->childrenSize = 0;
+    node->childrenCapacity = 0;
 
     node->nodeType = HTML_TAG;
 
     node->tag = tag;
     node->attributes = attributes;
+    node->value = 0;
 
     return node;
 };
