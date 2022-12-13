@@ -13,7 +13,6 @@ Node *initNode(char *tag, char *attributes) {
 
     node->tag = tag;
     node->attributes = attributes;
-    node->value = 0;
 
     return node;
 };

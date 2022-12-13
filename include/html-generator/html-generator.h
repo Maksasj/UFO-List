@@ -20,7 +20,6 @@ typedef struct Node {
         in attributes, like "value=string"
     */
     char *attributes;
-    char *value;
 } Node;
 
 // Core API
