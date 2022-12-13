@@ -3,6 +3,7 @@
 #include "testUtils.h"
 #include <assert.h>
 
+// Should set attributes in format value=...
 TEST(string_literal_1) {
     char tag[] = "div";
     char attrs[] = "class=\"container\"";
@@ -14,4 +15,27 @@ TEST(string_literal_1) {
     ensureStringEquality(node->children[0].attributes, "value=Hello world");
 
     freeNode(node);
+}
+
+// Should do nothing if one of the arguments is NULL
+TEST(string_literal_2) {
+    Node *container = initNode("div", "");
+
+    pushStringLiteral(container, NULL);
+
+    ensure(container->childrenSize, gclados.toEqualInt(0));
+
+    freeNode(container);
+}
+
+// Should do nothing if trying to push string literal node in string literal
+TEST(string_literal_3) {
+    Node *container = initNode("div", "");
+
+    pushStringLiteral(container, "hello");
+    pushStringLiteral(&container->children[0], "bye");
+
+    ensure(container->children[0].children, gclados.toEqualInt(0));
+
+    freeNode(container);
 }

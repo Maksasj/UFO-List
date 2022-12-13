@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ALLOCATED_MEMORY_INCREMENT 5
+
 typedef enum { HTML_TAG, STRING_LITERAL } NodeType;
 
 typedef struct Node {

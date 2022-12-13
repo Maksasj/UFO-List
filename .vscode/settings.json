@@ -1,5 +1,5 @@
 {
-	"editor.formatOnSave": true,
+    "editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
 	},
@@ -9,9 +9,5 @@
 		"editor.defaultFormatter": "xaver.clang-format",
 		"editor.suggest.insertMode": "replace",
 		"editor.semanticHighlighting.enabled": true
-	},
-	"files.associations": {
-		"html-generator.h": "c",
-		"gclados.h": "c"
 	}
 }

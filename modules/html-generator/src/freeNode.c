@@ -6,6 +6,9 @@ void freeNode(Node *node) {
         freeNode(&node->children[i]);
     }
 
-    free(node->attributes);
+    if (node->nodeType == STRING_LITERAL) {
+        free(node->attributes);
+    }
+
     free(node);
 }

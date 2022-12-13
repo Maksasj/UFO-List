@@ -3,6 +3,10 @@
 #include <string.h>
 
 Node *initNode(char *tag, char *attributes) {
+    if (tag == NULL || attributes == NULL) {
+        return NULL;
+    }
+
     Node *node = malloc(sizeof(Node));
 
     node->children = NULL;

@@ -19,3 +19,14 @@ TEST(init_node_1) {
 
     freeNode(node);
 }
+
+// Should return NULL if tag or attributes are NULL
+TEST(init_node_2) {
+    Node *node1 = initNode(NULL, NULL);
+    Node *node2 = initNode(NULL, "asdf");
+    Node *node3 = initNode("asdf", NULL);
+
+    ensure(node1, gclados.toEqualInt(0));
+    ensure(node2, gclados.toEqualInt(0));
+    ensure(node3, gclados.toEqualInt(0));
+}
