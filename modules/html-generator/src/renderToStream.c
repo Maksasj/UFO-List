@@ -33,6 +33,6 @@ void renderToStream(Node *node, FILE *stream, int tabCount) {
             fprintf(stream, "\t");
         }
 
-        fprintf(stream, "<\\%s>\n", node->tag);
+        fprintf(stream, "</%s>\n", node->tag);
     }
 }
