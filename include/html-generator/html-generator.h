@@ -103,7 +103,7 @@ void freeNode(Node *node);
 // Helper functions
 
 /**
- * Initialized default HTML node:
+ * Initializes default HTML node:
     <!DOCTYPE html>
     <html lang="en">
     <head>
