@@ -16,16 +16,8 @@ void pushStringLiteral(Node *parentNode, char *str) {
         parentNode->childrenCapacity += ALLOCATED_MEMORY_INCREMENT;
     }
 
-    // Concatenate value= and string literal
-    // TODO: move to function
-    char stringLiteralKey[] = "value=";
-    char *stringLiteralAttributes =
-        malloc(strlen(str) + strlen(stringLiteralKey));
-    strcpy(stringLiteralAttributes, stringLiteralKey);
-    strcat(stringLiteralAttributes, str);
-
     Node *children = malloc(sizeof(Node));
-    *children = (Node){.attributes = stringLiteralAttributes,
+    *children = (Node){.attributes = str,
                        .children = NULL,
                        .childrenSize = 0,
                        .childrenCapacity = 0,
