@@ -13,8 +13,12 @@ void renderToStreamRecursive(Node *node, FILE *stream, int tabCount) {
             fprintf(stream, " %s", node->attributes);
         }
 
-        fprintf(stream, ">\n");
-    } 
+        fprintf(stream, ">");
+    }
+
+    if (node->childrenSize > 0) {
+        fprintf(stream, "\n");
+    }
     
     if (node->nodeType == STRING_LITERAL) {
         if (strstr(node->attributes, "value=") != NULL) {
@@ -25,12 +29,14 @@ void renderToStreamRecursive(Node *node, FILE *stream, int tabCount) {
     }
 
     for (int index = 0; index < node->childrenSize; ++index) {
-        renderToStreamRecursive(&node->children[index], stream, tabCount + 1);
+        renderToStreamRecursive(node->children[index], stream, tabCount + 1);
     }
 
     if (node->nodeType == HTML_TAG) {
-        for (int index = 0; index < tabCount; ++index) {
-            fprintf(stream, "\t");
+        if (node->childrenSize > 0) {
+            for (int index = 0; index < tabCount; ++index) {
+                fprintf(stream, "\t");
+            }
         }
 
         fprintf(stream, "</%s>\n", node->tag);
@@ -38,5 +44,6 @@ void renderToStreamRecursive(Node *node, FILE *stream, int tabCount) {
 }
 
 void renderToStream(Node *node, FILE *stream) {
+    fprintf(stream, "<!DOCTYPE html>\n");
     renderToStreamRecursive(node, stream, 0);
 }

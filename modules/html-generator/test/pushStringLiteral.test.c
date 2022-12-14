@@ -11,8 +11,8 @@ TEST(string_literal_1) {
     char literal[] = "Hello world";
     pushStringLiteral(node, literal);
 
-    ensure(node->children[0].nodeType, gclados.toEqualInt(STRING_LITERAL));
-    ensureStringEquality(node->children[0].attributes, "value=Hello world");
+    ensure(node->children[0]->nodeType, gclados.toEqualInt(STRING_LITERAL));
+    ensureStringEquality(node->children[0]->attributes, "value=Hello world");
 
     freeNode(node);
 }
@@ -33,9 +33,9 @@ TEST(string_literal_3) {
     Node *container = initNode("div", "");
 
     pushStringLiteral(container, "hello");
-    pushStringLiteral(&container->children[0], "bye");
+    pushStringLiteral(container->children[0], "bye");
 
-    ensure(container->children[0].children, gclados.toEqualInt(0));
+    ensure(container->children[0]->children, gclados.toEqualInt(0));
 
     freeNode(container);
 }

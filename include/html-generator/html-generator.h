@@ -9,7 +9,7 @@
 typedef enum { HTML_TAG, STRING_LITERAL } NodeType;
 
 typedef struct Node {
-    struct Node *children;
+    struct Node **children;
     size_t childrenSize;
     size_t childrenCapacity;
 
@@ -31,7 +31,6 @@ Node *pushChildrenNode(Node *node, char *tag, char *attributes);
 void pushStringLiteral(Node *node, char *str);
 
 void renderToStream(Node *node, FILE *stream);
-void renderToStreamRecursive(Node *node, FILE *stream, int tabCount);
 
 void freeNode(Node *node);
 
