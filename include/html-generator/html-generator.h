@@ -46,6 +46,8 @@ typedef enum { HTML_TAG, STRING_LITERAL } NodeType;
 
 typedef struct Node {
     /* Array of children nodes */
+    struct Node **children;
+
     size_t childrenSize;
     size_t childrenCapacity;
 
