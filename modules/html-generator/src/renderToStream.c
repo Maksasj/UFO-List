@@ -44,6 +44,10 @@ void renderToStreamRecursive(Node *node, FILE *stream, int tabCount) {
 }
 
 void renderToStream(Node *node, FILE *stream) {
+    if (node == NULL || stream == NULL) {
+        return;
+    }
+
     fprintf(stream, "<!DOCTYPE html>\n");
     renderToStreamRecursive(node, stream, 0);
 }
