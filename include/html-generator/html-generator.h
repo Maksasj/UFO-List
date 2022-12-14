@@ -30,7 +30,8 @@ Node *initNode(char *tag, char *attributes);
 Node *pushChildrenNode(Node *node, char *tag, char *attributes);
 void pushStringLiteral(Node *node, char *str);
 
-void renderToStream(Node *node, FILE *stream, int tabCount);
+void renderToStream(Node *node, FILE *stream);
+void renderToStreamRecursive(Node *node, FILE *stream, int tabCount);
 
 void freeNode(Node *node);
 

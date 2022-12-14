@@ -1,7 +1,7 @@
 #include "html-generator.h"
 #include <string.h>
 
-void renderToStream(Node *node, FILE *stream, int tabCount) {
+void renderToStreamRecursive(Node *node, FILE *stream, int tabCount) {
     for (int index = 0; index < tabCount; ++index) {
         fprintf(stream, "\t");
     }
@@ -25,7 +25,7 @@ void renderToStream(Node *node, FILE *stream, int tabCount) {
     }
 
     for (int index = 0; index < node->childrenSize; ++index) {
-        renderToStream(&node->children[index], stream, tabCount + 1);
+        renderToStreamRecursive(&node->children[index], stream, tabCount + 1);
     }
 
     if (node->nodeType == HTML_TAG) {
@@ -35,4 +35,8 @@ void renderToStream(Node *node, FILE *stream, int tabCount) {
 
         fprintf(stream, "</%s>\n", node->tag);
     }
+}
+
+void renderToStream(Node *node, FILE *stream) {
+    renderToStreamRecursive(node, stream, 0);
 }
