@@ -45,7 +45,7 @@ TEST(push_children_3) {
     Node *node = initNode("div", "");
     pushStringLiteral(node, "asdf");
 
-    Node *child = pushChildrenNode(&node->children[0], "", "");
+    Node *child = pushChildrenNode(node->children[0], "", "");
 
     ensure(child, gclados.toEqualInt(0));
 
