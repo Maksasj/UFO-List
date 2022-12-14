@@ -3,7 +3,7 @@
 
 void freeNode(Node *node) {
     for (int i = 0; i < node->childrenSize; ++i) {
-        freeNode(&node->children[i]);
+        freeNode(node->children[i]);
     }
 
     if (node->nodeType == STRING_LITERAL) {

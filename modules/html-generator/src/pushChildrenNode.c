@@ -15,7 +15,9 @@ Node *pushChildrenNode(Node *node, char *tag, char *attributes) {
                                      ALLOCATED_MEMORY_INCREMENT * sizeof(Node));
         node->childrenCapacity += ALLOCATED_MEMORY_INCREMENT;
     }
-    node->children[node->childrenSize] = *childNode;
+    
+    node->children[node->childrenSize] = childNode;
     node->childrenSize += 1;
+
     return childNode;
 }

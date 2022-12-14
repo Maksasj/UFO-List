@@ -32,6 +32,6 @@ void pushStringLiteral(Node *parentNode, char *str) {
                        .nodeType = STRING_LITERAL,
                        .tag = NULL};
 
-    parentNode->children[parentNode->childrenSize] = *children;
+    parentNode->children[parentNode->childrenSize] = children;
     ++parentNode->childrenSize;
 }
