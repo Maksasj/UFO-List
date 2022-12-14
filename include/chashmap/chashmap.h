@@ -23,6 +23,7 @@
         if(!mapKeyExist(&hm, "randomkey"))
             printf("Key randomkey does not exist \n");
 
+        mapFree(&hm);
     }
  *
 */
@@ -36,7 +37,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* Structre what contains */
+/* Structure what contains a single entry of the hashmap */
 typedef struct HashmapEntry {
     /* Key of the entry */
     char* key;
@@ -69,7 +70,7 @@ void mapInit(Hashmap* map);
  * 
  * @param   map         Pointer to hashmap
  * @param   key         Key where to insert the value
- * @param   value       Attributes of new children node
+ * @param   value       Actual value to be inserted
  * @return  Pointer to new hashmap entry
 */
 HashmapEntry* mapInsert(Hashmap* map, char* key, char* value);
@@ -81,7 +82,7 @@ HashmapEntry* mapInsert(Hashmap* map, char* key, char* value);
  * @param   key         Key where expected entry is located
  * @return  Pointer to value or NULL if entry with provided key failed to find
 */
-void* mapGetValue(Hashmap* map, char* key);
+char* mapGetValue(Hashmap* map, char* key);
 
 /**
  * Checks if provided key occurs in provided hasmap
@@ -107,9 +108,6 @@ void mapFree(Hashmap* map);
  * @return  Returns pointer to next entry of the hashmap
 */
 HashmapEntry* getNextEntry(Hashmap* map);
-
-// Helper functions
-unsigned int chashmapHash(const char* key);
 
 #define FOREACH_ENTRY(MAP, ENTRY)                       \
     HashmapEntry* ENTRY;                                \

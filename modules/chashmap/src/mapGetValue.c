@@ -1,7 +1,9 @@
 #include "chashmap.h"
+#include "chashmapPrivate.h"
+
 #include <string.h>
 
-void* mapGetValue(Hashmap* map, char* key) {
+char* mapGetValue(Hashmap* map, char* key) {
     unsigned int hash = chashmapHash(key) % KEY_HASH_LENGTH;
 
     HashmapEntry* prev = map->HashmapEntries[hash];

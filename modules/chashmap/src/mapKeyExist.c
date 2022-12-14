@@ -1,4 +1,6 @@
 #include "chashmap.h"
+#include "chashmapPrivate.h"
+
 #include <string.h>
 
 int mapKeyExist(Hashmap* map, char* key) {

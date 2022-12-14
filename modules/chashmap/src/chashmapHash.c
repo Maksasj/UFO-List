@@ -1,4 +1,5 @@
 #include "chashmap.h"
+#include "chashmapPrivate.h"
 
 unsigned int chashmapHash(const char* key) {
     long int value = 0;
