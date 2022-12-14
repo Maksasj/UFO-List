@@ -17,6 +17,9 @@
 		"type_traits": "c",
 		"xtr1common": "c",
 		"stdlib.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"yaml-parser.h": "c",
+		"string": "c",
+		"string.h": "c"
 	}
 }
