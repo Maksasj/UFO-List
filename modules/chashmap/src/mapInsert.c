@@ -1,4 +1,5 @@
 #include "chashmap.h"
+#include "chashmapPrivate.h"
 
 static inline HashmapEntry* initEntry(char* key, char* value) {
     HashmapEntry* entry = malloc(sizeof(HashmapEntry));
