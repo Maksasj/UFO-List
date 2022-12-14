@@ -21,10 +21,6 @@ void renderToStreamRecursive(Node *node, FILE *stream, int tabCount) {
     }
     
     if (node->nodeType == STRING_LITERAL) {
-        if (strstr(node->attributes, "value=") != NULL) {
-            node->attributes += sizeof("value=") - 1;
-        }
-
         fprintf(stream, "%s\n", node->attributes);
     }
 

@@ -32,7 +32,7 @@ int main() {
     };
     GcladosTestSuite gcladosTestSuite2 = gcladosCreateTestSuite("/cygdrive/c/Git/UFO-List/modules/html-generator/test/pushChildrenNode.test.c", gcladosTests2, 3);
     GcladosTest gcladosTests3[] = {
-        __gcladosTest_string_literal_1("Should set attributes in format value=..."),
+        __gcladosTest_string_literal_1("Should set str in attributes"),
         __gcladosTest_string_literal_2("Should do nothing if one of the arguments is NULL"),
         __gcladosTest_string_literal_3("Should do nothing if trying to push string literal node in string literal"),
     };

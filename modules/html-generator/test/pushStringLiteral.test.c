@@ -3,7 +3,7 @@
 #include "testUtils.h"
 #include <assert.h>
 
-// Should set attributes in format value=...
+// Should set str in attributes
 TEST(string_literal_1) {
     char tag[] = "div";
     char attrs[] = "class=\"container\"";
@@ -12,7 +12,7 @@ TEST(string_literal_1) {
     pushStringLiteral(node, literal);
 
     ensure(node->children[0]->nodeType, gclados.toEqualInt(STRING_LITERAL));
-    ensureStringEquality(node->children[0]->attributes, "value=Hello world");
+    ensureStringEquality(node->children[0]->attributes, "Hello world");
 
     freeNode(node);
 }
