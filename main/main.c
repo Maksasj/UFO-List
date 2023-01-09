@@ -1,16 +1,36 @@
-#include <stdio.h>
-#include "chashmap.h"
+#include "css-generator.h"
 #include "html-generator.h"
+#include "outputFiles.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main() {
-    printf("Hello world !");
-    Node *htmlNode = initDefaultHTMLNode();
-    FILE *file = fopen("test.txt", "w");
+int main(int argc, char *argv[]) {
+    char *outputDir = NULL;
 
-    if (file != NULL) {
-        renderToStream(htmlNode, file);
+    if (argc > 1) {
+        outputDir = argv[1];
     }
 
-    fclose(file);
+    Node *htmlNode = initDefaultHTMLNode();
+
+    Node *head = htmlNode->children[0];
+    pushChildrenNode(head, "link", "rel=\"stylesheet\" href=\"styles.css\"");
+
+    writeHTMLFile(htmlNode, outputDir);
+
+    CSS css;
+    initCSS(&css);
+
+    Style bodyStyles;
+    initStyle(&bodyStyles, "body");
+
+    addCSSProperty(&bodyStyles, "width", "100%");
+    addCSSProperty(&bodyStyles, "height", "100%");
+
+    pushStyle(&css, &bodyStyles);
+
+    writeCSSFile(&css, outputDir);
+
     return 0;
 }
