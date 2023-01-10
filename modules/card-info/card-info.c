@@ -14,16 +14,40 @@ CardInfo initCardInfo() {
 
 void getCardInfoFromUser(CardInfo *cardInfo) {
     char userAnswer = ' ';
+    int year;
+    int month;
+    int day;
 
     printf("Enter person's name: ");
     fgets(cardInfo->name, PERSON_NAME_LEN, stdin);
     cardInfo->name[strcspn(cardInfo->name, "\n")] = 0;
 
-    printf("Enter date: ");
-    fgets(cardInfo->date, DATE_LEN, stdin);
+    while(1) {
+        fflush(stdin);
+        printf("Enter date (format: YYYY-MM-DD): ");
+        fgets(cardInfo->date, DATE_LEN, stdin);
+        cardInfo->date[strcspn(cardInfo->date, "\n")] = 0;
+
+        if (sscanf(cardInfo->date, "%4d-%2d-%2d", &year, &month, &day) == 3) {
+            if (year > 0) {
+                if (month >= 1 && month <= 12) {
+                    if((day >= 1 && day <= 31) && (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12))
+                        break;
+                    else if((day >= 1 && day <= 30) && (month == 4 || month == 6 || month == 9 || month == 11))
+                        break;
+                    else if((day >= 1 && day <= 28) && (month == 2))
+                        break;
+                    else if(day == 29 && month == 2 && (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)))
+                        break;
+                }
+            }
+        }
+    }
+    
     cardInfo->date[strcspn(cardInfo->date, "\n")] = 0;
 
     printf("Enter address: ");
+    fgets(cardInfo->address, ADDRESS_LEN, stdin);
     fgets(cardInfo->address, ADDRESS_LEN, stdin);
     cardInfo->address[strcspn(cardInfo->address, "\n")] = 0;
 

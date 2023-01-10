@@ -1,3 +1,20 @@
+/**
+ * card-info
+ *
+ * @authors
+ * Oskaras Vištorskis
+ *
+ * @brief
+ * Card Info structure, that could store personal information
+ *
+ * @example
+ *  int main() {
+        CardInfo cardInfo = initCardInfo();
+        getCardInfoFromUser(&cardInfo);
+    }
+ *
+*/
+
 #ifndef CARD_INFO_H
 #define CARD_INFO_H
 

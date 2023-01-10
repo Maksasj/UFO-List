@@ -15,8 +15,6 @@ int main(int argc, char *argv[]) {
 
     CardInfo cardInfo = initCardInfo();
     getCardInfoFromUser(&cardInfo);
-    printf("%s\n", cardInfo.identificationTraits[0]);
-    printf("%s", cardInfo.circumstances[0]);
 
     Node *htmlNode = initDefaultHTMLNode();
 
