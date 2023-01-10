@@ -10,3 +10,6 @@ target_link_libraries(main chashmap)
 
 target_include_directories(main PUBLIC "${PROJECT_SOURCE_DIR}/include/css-generator")
 target_link_libraries(main css-generator)
+
+target_include_directories(main PUBLIC "${PROJECT_SOURCE_DIR}/include/css-generator")
+target_link_libraries(main card-info)

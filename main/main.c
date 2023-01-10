@@ -1,6 +1,7 @@
 #include "css-generator.h"
 #include "html-generator.h"
 #include "outputFiles.h"
+#include "card-info.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +12,11 @@ int main(int argc, char *argv[]) {
     if (argc > 1) {
         outputDir = argv[1];
     }
+
+    CardInfo cardInfo = initCardInfo();
+    getCardInfoFromUser(&cardInfo);
+    printf("%s\n", cardInfo.identificationTraits[0]);
+    printf("%s", cardInfo.circumstances[0]);
 
     Node *htmlNode = initDefaultHTMLNode();
 
