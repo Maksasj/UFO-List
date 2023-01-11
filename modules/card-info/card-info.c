@@ -4,6 +4,9 @@
 #include <ctype.h>
 #include <string.h>
 
+#define FORMAT(S) "%" #S "s"
+#define VARIABLE_LEN_STR(S) FORMAT(S)
+
 CardInfo initCardInfo() {
     CardInfo cardInfo;
     cardInfo.identificationTraitsSize = 0;
@@ -19,13 +22,11 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
     int day;
 
     printf("Enter person's name: ");
-    fgets(cardInfo->name, PERSON_NAME_LEN, stdin);
-    cardInfo->name[strcspn(cardInfo->name, "\n")] = 0;
+    scanf(VARIABLE_LEN_STR(PERSON_NAME_LEN), cardInfo->name);
 
     while(1) {
         printf("Enter date (format: YYYY-MM-DD): ");
-        fgets(cardInfo->date, DATE_LEN, stdin);
-        cardInfo->date[strcspn(cardInfo->date, "\n")] = 0;
+        scanf(VARIABLE_LEN_STR(DATE_LEN), cardInfo->date);
 
         if (sscanf(cardInfo->date, "%4d-%2d-%2d", &year, &month, &day) == 3) {
             if (year >= 1000) {
@@ -43,11 +44,10 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
         }
     }
 
-    while (getchar() != '\n');
-
     printf("Enter address: ");
-    fgets(cardInfo->address, ADDRESS_LEN, stdin);
-    cardInfo->address[strcspn(cardInfo->address, "\n")] = 0;
+    scanf(VARIABLE_LEN_STR(ADDRESS_LEN), cardInfo->address);
+
+    while (getchar() != '\n');
 
     do {
         printf("Do you have a picture of a person? (Y/N): ");
@@ -59,8 +59,9 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
 
         if (userAnswer == 'Y') {
             printf("Enter path to the picture: ");
-            fgets(cardInfo->imagePath, IMAGE_PATH_LEN, stdin);
-            cardInfo->imagePath[strcspn(cardInfo->imagePath, "\n")] = 0;
+            scanf(VARIABLE_LEN_STR(IMAGE_PATH_LEN), cardInfo->imagePath);
+
+            while (getchar() != '\n');
             break;
         }
     } while(userAnswer != 'N');
@@ -75,10 +76,11 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
 
         if (userAnswer == 'Y') {
             printf("Enter identification trait: ");
-            cardInfo->identificationTraits[cardInfo->identificationTraitsSize] = (char*)malloc(IDENTIFICATION_TRAIT_LEN * sizeof(char));
-            fgets(cardInfo->identificationTraits[cardInfo->identificationTraitsSize], IDENTIFICATION_TRAIT_LEN, stdin);
 
-            cardInfo->identificationTraits[cardInfo->identificationTraitsSize][strcspn(cardInfo->identificationTraits[cardInfo->identificationTraitsSize], "\n")] = 0;
+            cardInfo->identificationTraits[cardInfo->identificationTraitsSize] = (char*)malloc(IDENTIFICATION_TRAIT_LEN * sizeof(char));
+            scanf(VARIABLE_LEN_STR(IDENTIFICATION_TRAIT_LEN), cardInfo->identificationTraits[cardInfo->identificationTraitsSize]);
+
+            while (getchar() != '\n');
 
             ++cardInfo->identificationTraitsSize;
         }
@@ -94,10 +96,11 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
 
         if (userAnswer == 'Y') {
             printf("Enter circumstance: ");
-            cardInfo->circumstances[cardInfo->circumstancesSize] = (char*)malloc(CIRCUMSTANCES_LEN * sizeof(char));
-            fgets(cardInfo->circumstances[cardInfo->circumstancesSize], CIRCUMSTANCES_LEN, stdin);
 
-            cardInfo->circumstances[cardInfo->circumstancesSize][strcspn(cardInfo->circumstances[cardInfo->circumstancesSize], "\n")] = 0;
+            cardInfo->circumstances[cardInfo->circumstancesSize] = (char*)malloc(CIRCUMSTANCES_LEN * sizeof(char));
+            scanf(VARIABLE_LEN_STR(CIRCUMSTANCES_LEN), cardInfo->circumstances[cardInfo->circumstancesSize]);
+
+            while (getchar() != '\n');
 
             ++cardInfo->circumstancesSize;
         }
