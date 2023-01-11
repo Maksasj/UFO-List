@@ -25,21 +25,38 @@
 #define IDENTIFICATION_TRAIT_LEN 128
 #define CIRCUMSTANCES_LEN 128
 
+// Structure which holds personal information
 typedef struct {
+    // for person's image rendering
     char imagePath[IMAGE_PATH_LEN];
+    // person's name
     char name[PERSON_NAME_LEN];
+    // date of disappearance 
     char date[DATE_LEN];
+    // last seen address
     char address[ADDRESS_LEN];
 
+    // identification traits
     int identificationTraitsSize;
     char *identificationTraits[IDENTIFICATION_TRAIT_LEN];
 
+    // circumstances of disappearance
     int circumstancesSize;
     char *circumstances[CIRCUMSTANCES_LEN];
 } CardInfo;
 
+/**
+ * Initializes empty CardInfo structure
+ * 
+ * @return empty CardInfo structure
+*/
 CardInfo initCardInfo();
 
+/**
+ * Getting information from console such as name, date, address, imagePath, identificationTraits, circumstances 
+ * 
+ * @param cardInfo existing CardInfo structure
+*/
 void getCardInfoFromUser(CardInfo *cardInfo);
 
 #endif

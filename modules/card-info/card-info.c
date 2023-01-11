@@ -23,7 +23,6 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
     cardInfo->name[strcspn(cardInfo->name, "\n")] = 0;
 
     while(1) {
-        fflush(stdin);
         printf("Enter date (format: YYYY-MM-DD): ");
         fgets(cardInfo->date, DATE_LEN, stdin);
         cardInfo->date[strcspn(cardInfo->date, "\n")] = 0;
@@ -44,14 +43,34 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
         }
     }
 
+    while (getchar() != '\n');
+
     printf("Enter address: ");
-    fgets(cardInfo->address, ADDRESS_LEN, stdin);
     fgets(cardInfo->address, ADDRESS_LEN, stdin);
     cardInfo->address[strcspn(cardInfo->address, "\n")] = 0;
 
     do {
+        printf("Do you have a picture of a person? (Y/N): ");
+        scanf("%c", &userAnswer);
+        
+        while (getchar() != '\n');
+
+        userAnswer = toupper(userAnswer);
+
+        if (userAnswer == 'Y') {
+            printf("Enter path to the picture: ");
+            fgets(cardInfo->imagePath, IMAGE_PATH_LEN, stdin);
+            cardInfo->imagePath[strcspn(cardInfo->imagePath, "\n")] = 0;
+            break;
+        }
+    } while(userAnswer != 'N');
+
+    do {
         printf("Add identification trait? (Y/N): ");
-        scanf("%c%*c", &userAnswer);
+        scanf("%c", &userAnswer);
+
+        while (getchar() != '\n');
+
         userAnswer = toupper(userAnswer);
 
         if (userAnswer == 'Y') {
@@ -67,7 +86,10 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
 
     do {
         printf("Add circumstance? (Y/N): ");
-        scanf("%c%*c", &userAnswer);
+        scanf("%c", &userAnswer);
+
+        while (getchar() != '\n');
+
         userAnswer = toupper(userAnswer);
 
         if (userAnswer == 'Y') {
