@@ -38,11 +38,11 @@ typedef struct {
 
     // identification traits
     int identificationTraitsSize;
-    char *identificationTraits[IDENTIFICATION_TRAIT_LEN];
+    char **identificationTraits;
 
     // circumstances of disappearance
     int circumstancesSize;
-    char *circumstances[CIRCUMSTANCES_LEN];
+    char **circumstances;
 } CardInfo;
 
 /**
