@@ -29,7 +29,7 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
         cardInfo->date[strcspn(cardInfo->date, "\n")] = 0;
 
         if (sscanf(cardInfo->date, "%4d-%2d-%2d", &year, &month, &day) == 3) {
-            if (year > 0) {
+            if (year >= 1000) {
                 if (month >= 1 && month <= 12) {
                     if((day >= 1 && day <= 31) && (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12))
                         break;
@@ -43,8 +43,6 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
             }
         }
     }
-    
-    cardInfo->date[strcspn(cardInfo->date, "\n")] = 0;
 
     printf("Enter address: ");
     fgets(cardInfo->address, ADDRESS_LEN, stdin);
