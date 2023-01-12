@@ -36,6 +36,20 @@ CardInfo initCardInfo() {
     return cardInfo;
 }
 
+int inputCards() {
+    char userAnswer = ' ';
+
+    printf("Add another card? (Y/N): ");
+    scanf("%c", &userAnswer);
+    scanf("%*c"); //skip end of line
+    userAnswer = toupper(userAnswer);
+
+    if(userAnswer == 'Y') {
+        return 1;
+    }
+    else return 0;
+}
+
 void getCardInfoFromUser(CardInfo *cardInfo) {
     char userAnswer = ' ';
     int year;
@@ -129,4 +143,5 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
             ++cardInfo->circumstancesSize;
         }
     } while(userAnswer != 'N');
+
 }

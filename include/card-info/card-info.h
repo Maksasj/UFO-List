@@ -59,4 +59,11 @@ CardInfo initCardInfo();
 */
 void getCardInfoFromUser(CardInfo *cardInfo);
 
+/**
+ * Asks if user wants to add another card
+ * 
+ * @return true or false
+*/
+int inputCards();
+
 #endif
