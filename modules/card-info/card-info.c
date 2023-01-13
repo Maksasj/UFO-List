@@ -36,7 +36,7 @@ CardInfo initCardInfo() {
     return cardInfo;
 }
 
-int inputCards() {
+bool inputCards() {
     char userAnswer = ' ';
 
     printf("Add another card? (Y/N): ");
