@@ -1,25 +1,29 @@
+#include "create-css.h"
 #include "css-generator.h"
 #include "html-generator.h"
-#include "init-css.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void initCSS(CSS *css) {
+
+void createCSS(CSS *css) {
     Style bodyStyles;
     initStyle(&bodyStyles, "body");
     addCSSProperty(&bodyStyles, "margin", "0");
-    addCSSProperty(&bodyStyles, "background-image", "linear-gradient(to right, rgb(0,0,0), rgb(0,0,0))");
+    addCSSProperty(&bodyStyles, "background-image",
+                   "linear-gradient(to right, rgb(0,0,0), rgb(0,0,0))");
     addCSSProperty(&bodyStyles, "display", "flex");
     addCSSProperty(&bodyStyles, "justify-content", "center");
     pushStyle(&css, &bodyStyles);
 
     Style pageContainer;
     initStyle(&pageContainer, "page-container");
-    addCSSProperty(&pageContainer, "box-shadow", "0px 0px 80px 75px rgba(14, 20, 34)");
+    addCSSProperty(&pageContainer, "box-shadow",
+                   "0px 0px 80px 75px rgba(14, 20, 34)");
     addCSSProperty(&pageContainer, "width", "1728px");
     addCSSProperty(&pageContainer, "height", "2200px");
-    addCSSProperty(&pageContainer, "background-image", "url(assets/Background.png)");
+    addCSSProperty(&pageContainer, "background-image",
+                   "url(assets/Background.png)");
     addCSSProperty(&pageContainer, "background-position", "top");
     addCSSProperty(&pageContainer, "background-repeat", "no-repeat");
     addCSSProperty(&pageContainer, "position", "relative");
@@ -52,7 +56,8 @@ void initCSS(CSS *css) {
     addCSSProperty(&gradient, "position", "absolute");
     addCSSProperty(&gradient, "top", "2200px");
     addCSSProperty(&gradient, "z-index", "-1");
-    addCSSProperty(&gradient, "background-image", "linear-gradient(rgb(0, 0, 25), black)");
+    addCSSProperty(&gradient, "background-image",
+                   "linear-gradient(rgb(0, 0, 25), black)");
     pushStyle(&css, &gradient);
 
     Style profilePhoto;
