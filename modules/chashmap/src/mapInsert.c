@@ -1,30 +1,28 @@
 #include "chashmap.h"
 
-static inline HashmapEntry* initEntry(char* key, char* value) {
+static inline HashmapEntry* initEntry(char* key, void* value) {
     HashmapEntry* entry = malloc(sizeof(HashmapEntry));
 
     entry->next = NULL;
 
-    entry->key = malloc(sizeof(char) * strlen(key));
+    entry->key = malloc(sizeof(char) * (strlen(key) + 1));
     strcpy(entry->key, key);
-
-    entry->value = malloc(sizeof(char) * strlen(value));
-    strcpy(entry->value, value);
+    
+    entry->value = value;
 
     return entry;
 }
 
-static inline void initEntryTo(HashmapEntry* to, char* key, char* value) {
+static inline void initEntryTo(HashmapEntry* to, char* key, void* value) {
     HashmapEntry* entry = to;
 
-    entry->key = malloc(sizeof(char) * strlen(key));
+    entry->key = malloc(sizeof(char) * (strlen(key) + 1));
     strcpy(entry->key, key);
 
-    entry->value = malloc(sizeof(char) * strlen(value));
-    strcpy(entry->value, value);
+    entry->value = value;
 }
 
-HashmapEntry* mapInsert(Hashmap* map, char* key, char* value) {
+HashmapEntry* mapInsert(Hashmap* map, char* key, void* value) {
     unsigned int hash = chashmapHash(key) % KEY_HASH_LENGTH;
     ++map->length;
 

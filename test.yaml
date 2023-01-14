@@ -1,0 +1,17 @@
+dictionary1:
+    key1: value1
+    key2: value2
+    key3: value3
+    dictionary2:
+        key1: value1
+        key2: value2 
+        dictionary3:
+            key1: value1
+            key2: value2
+            key3: value3
+            array:
+                - element1
+                - element2
+                - element3
+        key3: value3
+        key4: value4

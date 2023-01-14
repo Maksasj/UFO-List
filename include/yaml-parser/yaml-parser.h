@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
+#include "chashmap.h"
 
 typedef enum YamlTokenValueType {
     DICTIONARY,
@@ -20,14 +23,8 @@ typedef struct YamlToken {
     void* value;
 } YamlToken;
 
-YamlToken* tokenizeYamlString(char* string);
+char** splitIntoYamlStrings(char* string, int* length_out);
 
-void splitIntoYamlStrings(char* string);
-
-void yamlTest();
-
-//void wtf();
-
-char* properConcat(char *destination, char *source);
+void parseYaml(Hashmap *hm, char* string);
 
 #endif

@@ -8,7 +8,7 @@
 
 typedef struct HashmapEntry {
     char* key;
-    char* value;
+    void* value;
 
     /* Pointer to next element */
     struct HashmapEntry* next;
@@ -23,7 +23,7 @@ typedef struct Hashmap {
 
 void mapInit(Hashmap* map);
 
-HashmapEntry* mapInsert(Hashmap* map, char* key, char* value);
+HashmapEntry* mapInsert(Hashmap* map, char* key, void* value);
 
 void* mapGetValue(Hashmap* map, char* key);
 
