@@ -14,7 +14,7 @@ void createCSS(CSS *css) {
                    "linear-gradient(to right, rgb(0,0,0), rgb(0,0,0))");
     addCSSProperty(&bodyStyles, "display", "flex");
     addCSSProperty(&bodyStyles, "justify-content", "center");
-    pushStyle(&css, &bodyStyles);
+    pushStyle(css, &bodyStyles);
 
     Style pageContainer;
     initStyle(&pageContainer, "page-container");
@@ -27,7 +27,7 @@ void createCSS(CSS *css) {
     addCSSProperty(&pageContainer, "background-position", "top");
     addCSSProperty(&pageContainer, "background-repeat", "no-repeat");
     addCSSProperty(&pageContainer, "position", "relative");
-    pushStyle(&css, &pageContainer);
+    pushStyle(css, &pageContainer);
 
     Style titleText;
     initStyle(&titleText, "title-text");
@@ -35,19 +35,19 @@ void createCSS(CSS *css) {
     addCSSProperty(&titleText, "font-family", "\"Poppins\", sans-serif");
     addCSSProperty(&titleText, "font-size", "72px");
     addCSSProperty(&titleText, "font-weight", "bold");
-    pushStyle(&css, &titleText);
+    pushStyle(css, &titleText);
 
     Style mainTitle;
     initStyle(&mainTitle, "main-title");
     addCSSProperty(&mainTitle, "margin-top", "500px");
     addCSSProperty(&mainTitle, "margin-left", "150px");
-    pushStyle(&css, &mainTitle);
+    pushStyle(css, &mainTitle);
 
     Style lost;
     initStyle(&lost, "lost");
     addCSSProperty(&lost, "margin-top", "500px");
     addCSSProperty(&lost, "margin-left", "150px");
-    pushStyle(&css, &lost);
+    pushStyle(css, &lost);
 
     Style gradient;
     initStyle(&gradient, "gradient");
@@ -58,13 +58,13 @@ void createCSS(CSS *css) {
     addCSSProperty(&gradient, "z-index", "-1");
     addCSSProperty(&gradient, "background-image",
                    "linear-gradient(rgb(0, 0, 25), black)");
-    pushStyle(&css, &gradient);
+    pushStyle(css, &gradient);
 
     Style profilePhoto;
     initStyle(&profilePhoto, "profile-photo");
     addCSSProperty(&profilePhoto, "width", "48px");
     addCSSProperty(&profilePhoto, "height", "48px");
-    pushStyle(&css, &profilePhoto);
+    pushStyle(css, &profilePhoto);
 
     Style title;
     initStyle(&title, "title");
@@ -72,7 +72,7 @@ void createCSS(CSS *css) {
     addCSSProperty(&title, "display", "flex");
     addCSSProperty(&title, "justify-content", "space-between");
     addCSSProperty(&title, "padding", "3px");
-    pushStyle(&css, &title);
+    pushStyle(css, &title);
 
     Style cardsContainer;
     initStyle(&cardsContainer, "cards-container");
@@ -80,14 +80,14 @@ void createCSS(CSS *css) {
     addCSSProperty(&cardsContainer, "justify-content", "center");
     addCSSProperty(&cardsContainer, "margin-left", "150px");
     addCSSProperty(&cardsContainer, "margin-right", "150px");
-    pushStyle(&css, &cardsContainer);
+    pushStyle(css, &cardsContainer);
 
     Style cards;
     initStyle(&cards, "cards");
     addCSSProperty(&cards, "display", "flex");
     addCSSProperty(&cards, "gap", "50px");
     addCSSProperty(&cards, "flex-wrap", "wrap");
-    pushStyle(&css, &cards);
+    pushStyle(css, &cards);
 
     Style container;
     initStyle(&container, "container");
@@ -104,20 +104,20 @@ void createCSS(CSS *css) {
     addCSSProperty(&container, "border-radius", "25px");
     addCSSProperty(&container, "border-width", "1px");
     addCSSProperty(&container, "border-color", "rgb(255, 255, 255, 0.3)");
-    pushStyle(&css, &container);
+    pushStyle(css, &container);
 
     Style icon;
     initStyle(&icon, "icon");
     addCSSProperty(&icon, "width", "16px");
     addCSSProperty(&icon, "height", "16px");
     addCSSProperty(&icon, "padding", "2px");
-    pushStyle(&css, &icon);
+    pushStyle(css, &icon);
 
     Style personName;
     initStyle(&personName, "person-name");
     addCSSProperty(&personName, "font-family", "Poppins");
     addCSSProperty(&personName, "font-weight", "bold");
-    pushStyle(&css, &personName);
+    pushStyle(css, &personName);
 
     Style boldText;
     initStyle(&boldText, "bold-text");
@@ -125,7 +125,7 @@ void createCSS(CSS *css) {
     addCSSProperty(&boldText, "font-family", "Poppins");
     addCSSProperty(&boldText, "font-weight", "bold");
     addCSSProperty(&boldText, "padding-left", "5px");
-    pushStyle(&css, &boldText);
+    pushStyle(css, &boldText);
 
     Style normalText;
     initStyle(&normalText, "bold-text");
@@ -133,40 +133,40 @@ void createCSS(CSS *css) {
     addCSSProperty(&normalText, "font-family", "Poppins");
     addCSSProperty(&normalText, "font-weight", "normal");
     addCSSProperty(&normalText, "padding-left", "5px");
-    pushStyle(&css, &normalText);
+    pushStyle(css, &normalText);
 
     Style lastTimeSeen;
     initStyle(&lastTimeSeen, "last-time-seen");
     addCSSProperty(&lastTimeSeen, "align-items", "center");
     addCSSProperty(&lastTimeSeen, "display", "flex");
     addCSSProperty(&lastTimeSeen, "justify-content", "left");
-    pushStyle(&css, &lastTimeSeen);
+    pushStyle(css, &lastTimeSeen);
 
     Style adress;
     initStyle(&adress, "adress");
     addCSSProperty(&adress, "align-items", "center");
     addCSSProperty(&adress, "display", "flex");
     addCSSProperty(&adress, "justify-content", "left");
-    pushStyle(&css, &adress);
+    pushStyle(css, &adress);
 
     Style identificationTraits;
     initStyle(&identificationTraits, "identification-traits");
     addCSSProperty(&identificationTraits, "flex-direction", "column");
     addCSSProperty(&identificationTraits, "display", "flex");
     addCSSProperty(&identificationTraits, "justify-content", "left");
-    pushStyle(&css, &identificationTraits);
+    pushStyle(css, &identificationTraits);
 
     Style situation;
     initStyle(&situation, "situation");
     addCSSProperty(&situation, "flex-direction", "column");
     addCSSProperty(&situation, "display", "flex");
     addCSSProperty(&situation, "justify-content", "left");
-    pushStyle(&css, &situation);
+    pushStyle(css, &situation);
 
     Style idContent;
     initStyle(&idContent, "id-content");
     addCSSProperty(&idContent, "display", "none");
-    pushStyle(&css, &idContent);
+    pushStyle(css, &idContent);
 
     Style contentsTrigger;
     initStyle(&contentsTrigger, "contents-trigger");
@@ -174,16 +174,16 @@ void createCSS(CSS *css) {
     addCSSProperty(&contentsTrigger, "display", "flex");
     addCSSProperty(&contentsTrigger, "align-items", "center");
     addCSSProperty(&contentsTrigger, "cursor", "pointer");
-    pushStyle(&css, &contentsTrigger);
+    pushStyle(css, &contentsTrigger);
 
     Style sitContent;
     initStyle(&sitContent, "sit-content");
     addCSSProperty(&sitContent, "display", "none");
-    pushStyle(&css, &sitContent);
+    pushStyle(css, &sitContent);
 
     Style show;
     initStyle(&show, "show");
     addCSSProperty(&show, "display", "block");
     addCSSProperty(&show, "padding-left", "24px");
-    pushStyle(&css, &show);
+    pushStyle(css, &show);
 }

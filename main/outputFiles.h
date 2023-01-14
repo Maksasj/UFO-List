@@ -25,4 +25,10 @@ void writeHTMLFile(Node *htmlNode, char *outputDir);
  */
 void writeCSSFile(CSS *css, char *outputDir);
 
+/**
+ * @param outputDirDirectory where to output "index.js" file. If this
+ * parameter is NULL, file will be written to the current execution directory.
+ */
+void writeJSFile(char *outputDir);
+
 #endif

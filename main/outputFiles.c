@@ -8,7 +8,7 @@ void throwAllocationFailure() {
 
 char *getFilePath(char *outputDir, char *filename) {
     if (outputDir == NULL) {
-        char *filePath = malloc(strlen(filename));
+        char *filePath = malloc(strlen(filename) + 1);
 
         if (filePath == NULL) {
             return NULL;
@@ -72,4 +72,45 @@ void writeCSSFile(CSS *css, char *outputDir) {
     }
 
     free(filePath);
+}
+
+void writeJSFile(char *outputDir) {
+    char *filePath = getFilePath(outputDir, "index.js");
+
+    if (filePath == NULL) {
+        throwAllocationFailure();
+    }
+
+    FILE *jsFile = fopen(filePath, "w");
+
+    if (jsFile != NULL) {
+        char **jsText;
+        jsText[0] = "function registerShowListeners(triggerId, contentId) {\n";
+        jsText[1] =
+            "	const triggers = document.querySelectorAll(`#${triggerId}`);\n";
+        jsText[2] =
+            "	const contents = document.querySelectorAll(`#${contentId}`);\n";
+        jsText[3] = "	function trigger(element) {\n";
+        jsText[4] = "		if (element.classList.contains(\"show\")) {\n";
+        jsText[5] = "			element.classList.remove(\"show\");\n";
+        jsText[6] = "		} else {\n";
+        jsText[7] = "			element.classList.add(\"show\");\n";
+        jsText[8] = "		}\n";
+        jsText[9] = "	}\n";
+        jsText[10] = "	for (let i = 0; i < triggers.length; ++i) {\n";
+        jsText[11] =
+            "		triggers[i].addEventListener(\"click\", () => {\n";
+        jsText[12] = "			trigger(contents[i]);\n";
+        jsText[13] = "		});\n";
+        jsText[14] = "	}\n";
+        jsText[15] = "}\n";
+        jsText[16] =
+            "registerShowListeners(\"traits-trigger\", \"traits-content\");\n";
+        jsText[17] = "registerShowListeners(\"situation-trigger\", "
+                     "\"situation-content\");\n";
+
+        fprintf(jsFile, *jsText);
+
+        free(filePath);
+    }
 }

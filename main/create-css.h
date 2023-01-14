@@ -5,9 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /**
- * Creates CSS file
+ * Creates and adds styles in CSS structure
  *
  */
 void createCSS(CSS *css);

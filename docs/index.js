@@ -13,9 +13,9 @@ function registerShowListeners(triggerId, contentId) {
 	for (let i = 0; i < triggers.length; ++i) {
 		triggers[i].addEventListener("click", () => {
 			trigger(contents[i]);
-		})
+		});
 	}
 }
 
-registerShowListeners("traits-trigger", "traits-content")
-registerShowListeners("situation-trigger", "situation-content")
+registerShowListeners("traits-trigger", "traits-content");
+registerShowListeners("situation-trigger", "situation-content");
