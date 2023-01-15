@@ -41,8 +41,9 @@
 typedef struct HashmapEntry {
     /* Key of the entry */
     char* key;
+    
     /* Value of the entry */
-    char* value;
+    void* value;
 
     /* Pointer to next element */
     struct HashmapEntry* next;
@@ -73,7 +74,7 @@ void mapInit(Hashmap* map);
  * @param   value       Actual value to be inserted
  * @return  Pointer to new hashmap entry
 */
-HashmapEntry* mapInsert(Hashmap* map, char* key, char* value);
+HashmapEntry* mapInsert(Hashmap* map, char* key, void* value);
 
 /**
  * Returns pointer to value of entry located at this key.

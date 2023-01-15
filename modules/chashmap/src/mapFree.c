@@ -1,10 +1,10 @@
 #include "chashmap.h"
 
-void mapEntryFree(HashmapEntry* entry) {
+void mapEntryFree(HashmapEntry *entry) {
     free(entry->key);
     free(entry->value);
 
-    if(entry->next != NULL) {
+    if (entry->next != NULL) {
         mapEntryFree(entry->next);
         free(entry->next);
     }
@@ -12,11 +12,11 @@ void mapEntryFree(HashmapEntry* entry) {
     free(entry);
 }
 
-void mapFree(Hashmap* map) {
-    for(int i = 0; i < KEY_HASH_LENGTH; ++i) {
-        HashmapEntry* entry = map->HashmapEntries[i];
-        if(entry != NULL) {
-            mapEntryFree(entry);   
+void mapFree(Hashmap *map) {
+    for (int i = 0; i < KEY_HASH_LENGTH; ++i) {
+        HashmapEntry *entry = map->HashmapEntries[i];
+        if (entry != NULL) {
+            mapEntryFree(entry);
         }
 
         free(map->HashmapEntries[i]);
