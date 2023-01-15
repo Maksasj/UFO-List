@@ -11,16 +11,15 @@
 void pushImageNode(CardInfo *cardInfo, Node *title) {
     char initialAttributes[] = "class=\"profile-photo\" alt=\"Profile photo\"";
 
-    if (cardInfo->imagePath == NULL) {
-        char *imageAttributes = malloc(sizeof(initialAttributes));
-        strcpy(imageAttributes, initialAttributes);
-        pushChildrenNode(title, "img", imageAttributes);
-        return;
+    if (cardInfo->imageFileName == NULL) {
+        char defaultPhoto[] = "default-person.png";
+        cardInfo->imageFileName = malloc(sizeof(defaultPhoto));
+        strcpy(cardInfo->imageFileName, defaultPhoto);
     }
 
     int imageAttributesSize = strlen(initialAttributes) +
-                              strlen(cardInfo->imagePath) +
-                              strlen(" src=\"\"") + 1;
+                              strlen(cardInfo->imageFileName) +
+                              strlen("assets/") + strlen(" src=\"\"") + 1;
 
     char *imageAttributes = malloc(imageAttributesSize);
 
@@ -33,8 +32,10 @@ void pushImageNode(CardInfo *cardInfo, Node *title) {
     imageAttributes[strlen(initialAttributes)] = ' ';
     strcpy(imageAttributes + sizeof(initialAttributes), "src=\"");
 
-    strcpy(imageAttributes + sizeof(initialAttributes) + 5,
-           cardInfo->imagePath);
+    strcpy(imageAttributes + sizeof(initialAttributes) + 5, "assets/");
+
+    strcpy(imageAttributes + sizeof(initialAttributes) + 12,
+           cardInfo->imageFileName);
 
     imageAttributes[imageAttributesSize - 2] = '"';
     imageAttributes[imageAttributesSize - 1] = '\0';
@@ -102,7 +103,7 @@ void createCard(Node *cards) {
     Node *idList = pushChildrenNode(idContent, "ol", "class=\"normal-text\"");
 
     for (int i = 0; i < cardInfo.identificationTraitsSize; ++i) {
-        Node *idPoint = pushChildrenNode(idList, "li", "");
+        Node *idPoint = pushChildrenNode(idList, "li", "class=\"list-item\"");
         pushStringLiteral(idPoint, cardInfo.identificationTraits[i]);
     }
 
@@ -127,7 +128,8 @@ void createCard(Node *cards) {
         pushChildrenNode(circumContent, "ol", "class=\"normal-text\"");
 
     for (int i = 0; i < cardInfo.circumstancesSize; ++i) {
-        Node *circumPoint = pushChildrenNode(circumList, "li", "");
+        Node *circumPoint =
+            pushChildrenNode(circumList, "li", "class=\"list-item\"");
         pushStringLiteral(circumPoint, cardInfo.circumstances[i]);
     }
 }

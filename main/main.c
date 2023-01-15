@@ -9,6 +9,9 @@
 #include <string.h>
 
 int main() {
+    printf("Welcome to html website generator!\nAdd lost people information "
+           "that will appear on the website.\n");
+
     // HTML
     Node *htmlNode = initDefaultHTMLNode();
 

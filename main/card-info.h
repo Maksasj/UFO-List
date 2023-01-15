@@ -30,7 +30,7 @@
 // Structure which holds personal information
 typedef struct {
     // for person's image rendering
-    char *imagePath;
+    char *imageFileName;
     // person's name
     char *name;
     // date of disappearance
@@ -55,7 +55,7 @@ typedef struct {
 CardInfo initCardInfo();
 
 /**
- * Getting information from console such as name, date, address, imagePath,
+ * Getting information from console such as name, date, address, imageFileName,
  * identificationTraits, circumstances
  *
  * @param cardInfo existing CardInfo structure

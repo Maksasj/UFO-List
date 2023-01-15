@@ -189,4 +189,9 @@ void createCSS(CSS *css) {
     addCSSProperty(show, "display", "block");
     addCSSProperty(show, "padding-left", "24px");
     pushStyle(css, show);
+
+    Style *listItem = malloc(sizeof(Style));
+    initStyle(listItem, ".list-item");
+    addCSSProperty(listItem, "word-break", "break-word");
+    pushStyle(css, listItem);
 }

@@ -49,7 +49,7 @@ bool inputCards() {
     char userAnswer = ' ';
 
     while (userAnswer != 'N') {
-        printf("Add another card? (Y/N): ");
+        printf("Add another person? (Y/N): ");
         scanf("%c", &userAnswer);
 
         skipCharacters();
@@ -74,14 +74,15 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
     cardInfo->name = malloc(PERSON_NAME_LEN + 1);
     scanf(VARIABLE_LEN_STR(PERSON_NAME_LEN), cardInfo->name);
 
-    scanf("%*c"); // skip end of line
+    skipCharacters();
 
     cardInfo->date = malloc(DATE_LEN + 1);
     while (1) {
-        printf("Enter date (format: YYYY-MM-DD): ");
+        printf(
+            "Enter the date the person was last seen (format: YYYY-MM-DD): ");
         scanf(VARIABLE_LEN_STR(DATE_LEN), cardInfo->date);
 
-        scanf("%*c"); // skip end of line
+        skipCharacters();
 
         if (sscanf(cardInfo->date, "%4d-%2d-%2d", &year, &month, &day) == 3) {
             bool dateIsValid = validateDate(year, month, day);
@@ -96,11 +97,11 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
         }
     }
 
-    printf("Enter address: ");
+    printf("Enter person's address: ");
     cardInfo->address = malloc(ADDRESS_LEN + 1);
     scanf(VARIABLE_LEN_STR(ADDRESS_LEN), cardInfo->address);
 
-    scanf("%*c"); // skip end of line
+    skipCharacters();
 
     do {
         printf("Do you have a picture of a person? (Y/N): ");
@@ -111,14 +112,15 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
         userAnswer = toupper(userAnswer);
 
         if (userAnswer == 'Y') {
-            printf("Enter path to the picture: ");
-            cardInfo->imagePath = malloc(IMAGE_PATH_LEN + 1);
-            scanf(VARIABLE_LEN_STR(IMAGE_PATH_LEN), cardInfo->imagePath);
+            printf("Enter name of the picture file and copy it in "
+                   "./docs/assets folder: ");
+            cardInfo->imageFileName = malloc(IMAGE_PATH_LEN + 1);
+            scanf(VARIABLE_LEN_STR(IMAGE_PATH_LEN), cardInfo->imageFileName);
 
-            scanf("%*c"); // skip end of line
+            skipCharacters();
             break;
         } else {
-            cardInfo->imagePath = NULL;
+            cardInfo->imageFileName = NULL;
         }
     } while (userAnswer != 'N');
 
@@ -144,14 +146,14 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
                 cardInfo
                     ->identificationTraits[cardInfo->identificationTraitsSize]);
 
-            scanf("%*c"); // skip end of line
+            skipCharacters();
 
             ++cardInfo->identificationTraitsSize;
         }
     } while (userAnswer != 'N');
 
     do {
-        printf("Add circumstance? (Y/N): ");
+        printf("Add circumstance of disappearance? (Y/N): ");
         scanf("%c", &userAnswer);
 
         skipCharacters();
@@ -170,7 +172,7 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
             scanf(VARIABLE_LEN_STR(CIRCUMSTANCES_LEN),
                   cardInfo->circumstances[cardInfo->circumstancesSize]);
 
-            scanf("%*c"); // skip end of line
+            skipCharacters();
 
             ++cardInfo->circumstancesSize;
         }
