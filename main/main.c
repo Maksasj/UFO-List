@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 
     createCSS(&css);
 
-    // writeCSSFile(&css, outputDir);
+    writeCSSFile(&css, outputDir);
 
     writeJSFile(outputDir);
 

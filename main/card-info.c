@@ -117,6 +117,8 @@ void getCardInfoFromUser(CardInfo *cardInfo) {
 
             scanf("%*c"); // skip end of line
             break;
+        } else {
+            cardInfo->imagePath = NULL;
         }
     } while (userAnswer != 'N');
 

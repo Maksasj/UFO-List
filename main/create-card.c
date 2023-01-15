@@ -10,6 +10,14 @@
 
 void pushImageNode(CardInfo *cardInfo, Node *title) {
     char initialAttributes[] = "class=\"profile-photo\" alt=\"Profile photo\"";
+
+    if (cardInfo->imagePath == NULL) {
+        char *imageAttributes = malloc(sizeof(initialAttributes));
+        strcpy(imageAttributes, initialAttributes);
+        pushChildrenNode(title, "img", imageAttributes);
+        return;
+    }
+
     int imageAttributesSize = strlen(initialAttributes) +
                               strlen(cardInfo->imagePath) +
                               strlen(" src=\"\"") + 1;
@@ -21,16 +29,17 @@ void pushImageNode(CardInfo *cardInfo, Node *title) {
     }
 
     strcpy(imageAttributes, initialAttributes);
-    imageAttributes[strlen(initialAttributes)] = '\0';
+
     imageAttributes[strlen(initialAttributes)] = ' ';
     strcpy(imageAttributes + sizeof(initialAttributes), "src=\"");
+
     strcpy(imageAttributes + sizeof(initialAttributes) + 5,
            cardInfo->imagePath);
 
     imageAttributes[imageAttributesSize - 2] = '"';
     imageAttributes[imageAttributesSize - 1] = '\0';
 
-    Node *image = pushChildrenNode(title, "img", imageAttributes);
+    pushChildrenNode(title, "img", imageAttributes);
 }
 
 void createCard(Node *cards) {
