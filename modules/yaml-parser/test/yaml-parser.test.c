@@ -1,5 +1,6 @@
-#include "gclados.h"
 #include "yaml-parser.h"
+#include "gclados.h"
+
 
 // Test for 'int countDigits(int value);'
 TEST(countDigits_ensure_valid_output) {
@@ -18,13 +19,13 @@ TEST(countDigits_ensure_valid_output) {
 
 // Test for 'char* yamlStrCat(char *a, char *b);'
 TEST(yamlStrCat_ensure_valid_output) {
-    char* string1 = yamlStrCat("Hello", "World");
+    char *string1 = yamlStrCat("Hello", "World");
     ensure(strlen(string1), gclados.toEqualInt(10));
 
-    char* string2 = yamlStrCat("Hi", "");
+    char *string2 = yamlStrCat("Hi", "");
     ensure(strlen(string2), gclados.toEqualInt(2));
 
-    char* string3 = yamlStrCat("", "Za warudo");
+    char *string3 = yamlStrCat("", "Za warudo");
     ensure(strlen(string3), gclados.toEqualInt(9));
 }
 
@@ -43,24 +44,25 @@ TEST(countTabs_ensure_valid_output) {
 
 // Test for 'char* getKeyFromYamlString(char* string);'
 TEST(getKeyFromYamlString_ensure_valid_output) {
-    char* string1 = getKeyFromYamlString("    key1:value1");
+    char *string1 = getKeyFromYamlString("    key1:value1");
     ensure(strlen(string1), gclados.toEqualInt(4));
 
-    char* string2 = getKeyFromYamlString("    anotherkey:value2");
+    char *string2 = getKeyFromYamlString("    anotherkey:value2");
     ensure(strlen(string2), gclados.toEqualInt(10));
 
-    char* string3 = getKeyFromYamlString("    anotheranotherkey:value2");
+    char *string3 = getKeyFromYamlString("    anotheranotherkey:value2");
     ensure(strlen(string3), gclados.toEqualInt(17));
 }
 
 // Test for 'char* getValueFromYamlString(char* string);'
 TEST(getValueFromYamlString_ensure_valid_output) {
-    char* string1 = getValueFromYamlString("    key1:value1");
+    char *string1 = getValueFromYamlString("    key1:value1");
     ensure(strlen(string1), gclados.toEqualInt(6));
 
-    char* string2 = getValueFromYamlString("    anotherkey:value1butnotvalue1");
+    char *string2 = getValueFromYamlString("    anotherkey:value1butnotvalue1");
     ensure(strlen(string2), gclados.toEqualInt(18));
 
-    char* string3 = getValueFromYamlString("    anotheranotherkey:anotheranothervalue");
+    char *string3 =
+        getValueFromYamlString("    anotheranotherkey:anotheranothervalue");
     ensure(strlen(string3), gclados.toEqualInt(19));
 }
