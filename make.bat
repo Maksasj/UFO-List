@@ -1,3 +1,3 @@
 @ECHO OFF
 
-cmake --build cmake-build-debug && .\cmake-build-debug\main\main.exe
+cmake --build cmake-build-debug && .\cmake-build-debug\main\main.exe ./build

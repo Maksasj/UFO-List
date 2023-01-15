@@ -1,17 +1,8 @@
 #include "gclados.h"
 #include "html-generator.h"
+#include "testUtils.h"
 #include <assert.h>
 #include <string.h>
-
-void ensureStringEquality(char *str1, char *str2) {
-    assert(strlen(str1) == strlen(str2));
-    int i = 0;
-
-    while (str1[i] != '\0') {
-        ensure(str1[i], gclados.toEqualChar(str2[i]));
-        ++i;
-    }
-}
 
 // Should return Node pointer with correct values
 TEST(init_node_1) {
@@ -27,4 +18,15 @@ TEST(init_node_1) {
     ensureStringEquality(node->attributes, "class=\"container\"");
 
     freeNode(node);
+}
+
+// Should return NULL if tag or attributes are NULL
+TEST(init_node_2) {
+    Node *node1 = initNode(NULL, NULL);
+    Node *node2 = initNode(NULL, "asdf");
+    Node *node3 = initNode("asdf", NULL);
+
+    ensure(node1, gclados.toEqualInt(0));
+    ensure(node2, gclados.toEqualInt(0));
+    ensure(node3, gclados.toEqualInt(0));
 }
