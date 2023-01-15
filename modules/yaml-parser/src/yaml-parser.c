@@ -1,38 +1,22 @@
 #include "yaml-parser.h"
 
-char** splitIntoYamlStrings(char* string, int* length_out) {
-    int arra = 0;
+int countDigits(int value) {  
+    int counter = 0;
 
-    (*length_out) = 1;
-    char** array = malloc(sizeof(char*));
-    
-    int tmp_string_length = 1;
-    char* tmp_string = malloc(sizeof(char));
-    
-    for(int i = 0; i <= strlen(string); ++i) {
-        char character = string[i];
-
-        if(character == '\n' || character == '\0') {
-            tmp_string[tmp_string_length - 1] = '\0';
-
-            array[(*length_out) - 1] = malloc(sizeof(char)*(strlen(tmp_string) + 1));
-            strcpy(array[(*length_out) - 1], tmp_string);
-            ++(*length_out);
-
-            array = realloc(array, sizeof(char*)*(*length_out));
-
-            free(tmp_string);
-            tmp_string_length = 1;
-            tmp_string = malloc(sizeof(char)*tmp_string_length);
-        } else {
-            tmp_string[tmp_string_length - 1] = character;
-            tmp_string = realloc(tmp_string, sizeof(char)*(tmp_string_length + 1));
-            ++tmp_string_length;
-        }
+    while(value != 0) {  
+        value = value / 10;  
+        counter++;  
     }
+    
+    return counter;  
+}
 
-    --(*length_out);
-    return array;
+char *yamlStrCat(char *a, char *b) {
+  char *p, *q, *rtn;
+  rtn = q = malloc(strlen(a) + strlen(b) + 1);
+  for (p = a; (*q = *p) != '\0'; ++p, ++q) {}
+  for (p = b; (*q = *p) != '\0'; ++p, ++q) {}
+  return rtn;
 }
 
 bool isArrayElement(char* string) {
@@ -51,7 +35,7 @@ int countTabs(char* string) {
 
     int tabs = 0;
 
-    int tmp_spaces = 0;
+    int tmpSpaces = 0;
     for(int i = 0; i < len; ++i) {
         char character = string[i];
 
@@ -62,62 +46,54 @@ int countTabs(char* string) {
             tabs++;
 
         if(character == ' ')
-            ++tmp_spaces;
+            ++tmpSpaces;
     }
 
-    tabs += tmp_spaces / DEFUALT_AMOUNT_OF_SPACES_FOR_ONE_TAB;
+    tabs += tmpSpaces / DEFUALT_AMOUNT_OF_SPACES_FOR_ONE_TAB;
 
     return tabs;
 }
 
-char *yamlStrCat(char *a, char *b) {
-  char *p, *q, *rtn;
-  rtn = q = malloc(strlen(a) + strlen(b) + 1);
-  for (p = a; (*q = *p) != '\0'; ++p, ++q) {}
-  for (p = b; (*q = *p) != '\0'; ++p, ++q) {}
-  return rtn;
-}
-
 char* getKeyFromYamlString(char* string) {
     char* out = malloc(sizeof(char));
-    int out_size = 0;
+    int outSize = 0;
 
     for(int i = 0; strlen(string); ++i) {
         if(string[i] == ':' || string[i] == '\0') break;
         if(string[i] == ' ' || string[i] == '\t') continue;
 
-        out[out_size] = string[i];
-        out = realloc(out, out_size);
-        ++out_size;
+        out[outSize] = string[i];
+        out = realloc(out, outSize);
+        ++outSize;
     }
 
-    out[out_size] = '\0';
+    out[outSize] = '\0';
 
     return out;
 }
 
 char* getValueFromYamlString(char* string) {
     char* out = malloc(sizeof(char));
-    int out_size = 0;
+    int outSize = 0;
     
-    int start_index = 0;
+    int startIndex = 0;
     for(int i = 0; i < strlen(string); ++i) {
-        ++start_index;
+        ++startIndex;
         if(string[i] == ':') break;
     }
 
-    for(int i = start_index; i < strlen(string); ++i) {
+    for(int i = startIndex; i < strlen(string); ++i) {
         if(string[i] != ' ') break;
-        ++start_index;
+        ++startIndex;
     }
 
-    for(int i = start_index; i < strlen(string); ++i) {
-        out[out_size] = string[i];
-        out = realloc(out, out_size);
-        ++out_size;
+    for(int i = startIndex; i < strlen(string); ++i) {
+        out[outSize] = string[i];
+        out = realloc(out, outSize);
+        ++outSize;
     }
 
-    out[out_size] = '\0';
+    out[outSize] = '\0';
 
     return out;
 }
@@ -125,101 +101,123 @@ char* getValueFromYamlString(char* string) {
 
 char* getValueFromYamlArrayStringElement(char* string) {
     char* out = malloc(sizeof(char));
-    int out_size = 0;
+    int outSize = 0;
     
-    int start_index = 0;
+    int startIndex = 0;
     for(int i = 0; i < strlen(string); ++i) {
         if(string[i] != ' ' && string[i] != '-' && string[i] != '\t') break;
-        ++start_index;
+        ++startIndex;
     }
 
-    for(int i = start_index; i < strlen(string); ++i) {
-        out[out_size] = string[i];
-        out = realloc(out, out_size);
-        ++out_size;
+    for(int i = startIndex; i < strlen(string); ++i) {
+        out[outSize] = string[i];
+        out = realloc(out, outSize);
+        ++outSize;
     }
 
-    out[out_size] = '\0';
+    out[outSize] = '\0';
 
     return out;
 }
 
-int countDigits(int n) {  
-    int counter = 0;
+char** splitIntoYamlStrings(char* string, int* lengthOut) {
+    int arra = 0;
 
-    while(n != 0) {  
-        n = n / 10;  
-        counter++;  
-    }
+    (*lengthOut) = 1;
+    char** array = malloc(sizeof(char*));
     
-    return counter;  
-}  
+    int tmp_string_length = 1;
+    char* tmp_string = malloc(sizeof(char));
+    
+    for(int i = 0; i <= strlen(string); ++i) {
+        char character = string[i];
 
-void findValues(Hashmap* hashmap, char* prev_key, int current_index, int prev_index, char** array, int array_length) {
-    int last_flag = 0;
+        if(character == '\n' || character == '\0') {
+            tmp_string[tmp_string_length - 1] = '\0';
 
-    for(int i = current_index; i < array_length - 1; ++i) {
-        int current_level = countTabs(array[current_index]);
-        int next_level = countTabs(array[i + 1]);
+            array[(*lengthOut) - 1] = malloc(sizeof(char)*(strlen(tmp_string) + 1));
+            strcpy(array[(*lengthOut) - 1], tmp_string);
+            ++(*lengthOut);
 
-        if(next_level == current_level && current_level == (countTabs(array[current_index + 1]))) {
-            char* current_key = getKeyFromYamlString(array[current_index]);
+            array = realloc(array, sizeof(char*)*(*lengthOut));
+
+            free(tmp_string);
+            tmp_string_length = 1;
+            tmp_string = malloc(sizeof(char)*tmp_string_length);
+        } else {
+            tmp_string[tmp_string_length - 1] = character;
+            tmp_string = realloc(tmp_string, sizeof(char)*(tmp_string_length + 1));
+            ++tmp_string_length;
+        }
+    }
+
+    --(*lengthOut);
+    return array;
+}
+
+void findValues(Hashmap* hashmap, char* prevKey, int currentIndex, int prevIndex, char** array, int arrayLength) {
+    int lastFlag = 0;
+
+    for(int i = currentIndex; i < arrayLength - 1; ++i) {
+        int currentLevel = countTabs(array[currentIndex]);
+        int nextLevel = countTabs(array[i + 1]);
+
+        if(nextLevel == currentLevel && currentLevel == (countTabs(array[currentIndex + 1]))) {
+            char* currentKey = getKeyFromYamlString(array[currentIndex]);
             char* value = NULL;
 
-            if(isArrayElement(current_key)) {
-                free(current_key);
+            if(isArrayElement(currentKey)) {
+                free(currentKey);
 
-                int array_element_index = current_index - prev_index - 1;
-                current_key = malloc(sizeof(char) * (countDigits(array_element_index)));
-                sprintf(current_key, "[%d]", array_element_index);
+                int arrayElementIndex = currentIndex - prevIndex - 1;
+                currentKey = malloc(sizeof(char) * (countDigits(arrayElementIndex)));
+                sprintf(currentKey, "[%d]", arrayElementIndex);
 
-                value = getValueFromYamlArrayStringElement(array[current_index]);
+                value = getValueFromYamlArrayStringElement(array[currentIndex]);
             } else {
-                value = getValueFromYamlString(array[current_index]);
+                value = getValueFromYamlString(array[currentIndex]);
             }
             
-            char* new_key = yamlStrCat(prev_key, current_key);
+            char* newKey = yamlStrCat(prevKey, currentKey);
 
             YamlToken* token = malloc(sizeof(YamlToken));
-            token->type = STRING;
             token->value = value;
             
-            mapInsert(hashmap, new_key, token);
+            mapInsert(hashmap, newKey, token);
             return;
         }
 
-        if(next_level == current_level + 1) {
-            char* current_key = getKeyFromYamlString(array[current_index]);
-            char* new_key = yamlStrCat(prev_key, current_key);
+        if(nextLevel == currentLevel + 1) {
+            char* currentKey = getKeyFromYamlString(array[currentIndex]);
+            char* newKey = yamlStrCat(prevKey, currentKey);
 
-            findValues(hashmap, new_key, i + 1, current_index, array, array_length);
-            last_flag = 1;
+            findValues(hashmap, newKey, i + 1, currentIndex, array, arrayLength);
+            lastFlag = 1;
         }
     }
 
-    if(!last_flag) {
-        char* current_key = getKeyFromYamlString(array[current_index]);
+    if(!lastFlag) {
+        char* currentKey = getKeyFromYamlString(array[currentIndex]);
         char* value = NULL;
 
-        if(isArrayElement(current_key)) {
-            free(current_key);
+        if(isArrayElement(currentKey)) {
+            free(currentKey);
 
-            int array_element_index = current_index - prev_index - 1;
-            current_key = malloc(sizeof(char) * (countDigits(array_element_index)));
-            sprintf(current_key, "[%d]", array_element_index);
+            int arrayElementIndex = currentIndex - prevIndex - 1;
+            currentKey = malloc(sizeof(char) * (countDigits(arrayElementIndex)));
+            sprintf(currentKey, "[%d]", arrayElementIndex);
 
-            value = getValueFromYamlArrayStringElement(array[current_index]);
+            value = getValueFromYamlArrayStringElement(array[currentIndex]);
         } else {
-            value = getValueFromYamlString(array[current_index]);
+            value = getValueFromYamlString(array[currentIndex]);
         }
         
-        char* new_key = yamlStrCat(prev_key, current_key);
+        char* newKey = yamlStrCat(prevKey, currentKey);
 
         YamlToken* token = malloc(sizeof(YamlToken));
-        token->type = STRING;
         token->value = value;
         
-        mapInsert(hashmap, new_key, token);
+        mapInsert(hashmap, newKey, token);
     }
 }
 
