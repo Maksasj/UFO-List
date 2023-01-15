@@ -30,13 +30,13 @@
 // Structure which holds personal information
 typedef struct {
     // for person's image rendering
-    char imagePath[IMAGE_PATH_LEN];
+    char *imagePath;
     // person's name
-    char name[PERSON_NAME_LEN];
+    char *name;
     // date of disappearance
-    char date[DATE_LEN];
+    char *date;
     // last seen address
-    char address[ADDRESS_LEN];
+    char *address;
 
     // identification traits
     int identificationTraitsSize;

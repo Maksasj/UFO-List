@@ -5,12 +5,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /**
  * Creates new card
  *
- * @param h_cards Node in which the new card is pushed
+ * @param cards Node in which the new card is pushed
  */
-void createCard(Node *h_cards);
+void createCard(Node *cards);
 
 #endif

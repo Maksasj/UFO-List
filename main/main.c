@@ -16,7 +16,6 @@ int main(int argc, char *argv[]) {
     }
 
     // HTML
-
     Node *htmlNode = initDefaultHTMLNode();
 
     // Head
@@ -35,31 +34,29 @@ int main(int argc, char *argv[]) {
     // Body
     Node *body = htmlNode->children[1];
 
-    Node *h_pageContainer =
+    Node *pageContainer =
         pushChildrenNode(body, "div", "class=\"page-container\"");
 
-    Node *h_mainTitle = pushChildrenNode(h_pageContainer, "div",
-                                         "class=\"title-text main-title\"");
-    pushStringLiteral(h_mainTitle, "UFO List - find<br/>your friends");
+    Node *mainTitle = pushChildrenNode(pageContainer, "div",
+                                       "class=\"title-text main-title\"");
+    pushStringLiteral(mainTitle, "UFO List - find<br/>your friends");
 
-    Node *h_lostTitle =
-        pushChildrenNode(h_pageContainer, "div", "class=\"title-text lost\"");
-    pushStringLiteral(h_lostTitle, "Lost");
+    Node *lostTitle =
+        pushChildrenNode(pageContainer, "div", "class=\"title-text lost\"");
+    pushStringLiteral(lostTitle, "Lost");
 
-    Node *h_cardsContainer =
-        pushChildrenNode(h_pageContainer, "div", "class=\"cards-container\"");
+    Node *cardsContainer =
+        pushChildrenNode(pageContainer, "div", "class=\"cards-container\"");
 
-    Node *h_cards =
-        pushChildrenNode(h_cardsContainer, "div", "class=\"cards\"");
+    Node *cards = pushChildrenNode(cardsContainer, "div", "class=\"cards\"");
 
     while (inputCards()) {
-        createCard(h_cards);
+        createCard(cards);
     }
 
-    Node *h_gradient =
-        pushChildrenNode(h_pageContainer, "div", "id=\"gradient\"");
+    pushChildrenNode(pageContainer, "div", "id=\"gradient\"");
 
-    Node *h_script = pushChildrenNode(body, "script", "src=\"./index.js\"");
+    pushChildrenNode(body, "script", "src=\"./index.js\"");
 
     writeHTMLFile(htmlNode, outputDir);
 
@@ -69,7 +66,7 @@ int main(int argc, char *argv[]) {
 
     createCSS(&css);
 
-    writeCSSFile(&css, outputDir);
+    // writeCSSFile(&css, outputDir);
 
     writeJSFile(outputDir);
 
