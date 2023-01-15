@@ -12,17 +12,22 @@
 #include "html-generator.h"
 
 /**
+ * Generates html file in docs directory.
+ *
  * @param   htmlNode    Pointer to root html node.
- * @param   outputDir   Directory where to output "index.html" file. If this
- * parameter is NULL, file will be written to the current execution directory.
  */
-void writeHTMLFile(Node *htmlNode, char *outputDir);
+void writeHTMLFile(Node *htmlNode);
 
 /**
+ * Generates css files in docs directory.
+ *
  * @param   css         Pointer to css root node.
- * @param   outputDir   Directory where to output "styles.css" file. If this
- * parameter is NULL, file will be written to the current execution directory.
  */
-void writeCSSFile(CSS *css, char *outputDir);
+void writeCSSFile(CSS *css);
+
+/**
+ * Generates js file in docs directory.
+ */
+void writeJSFile();
 
 #endif

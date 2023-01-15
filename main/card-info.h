@@ -18,6 +18,8 @@
 #ifndef CARD_INFO_H
 #define CARD_INFO_H
 
+#include <stdbool.h>
+
 #define IMAGE_PATH_LEN 128
 #define PERSON_NAME_LEN 64
 #define DATE_LEN 10
@@ -28,13 +30,13 @@
 // Structure which holds personal information
 typedef struct {
     // for person's image rendering
-    char imagePath[IMAGE_PATH_LEN];
+    char *imageFileName;
     // person's name
-    char name[PERSON_NAME_LEN];
-    // date of disappearance 
-    char date[DATE_LEN];
+    char *name;
+    // date of disappearance
+    char *date;
     // last seen address
-    char address[ADDRESS_LEN];
+    char *address;
 
     // identification traits
     int identificationTraitsSize;
@@ -47,16 +49,24 @@ typedef struct {
 
 /**
  * Initializes empty CardInfo structure
- * 
+ *
  * @return empty CardInfo structure
-*/
+ */
 CardInfo initCardInfo();
 
 /**
- * Getting information from console such as name, date, address, imagePath, identificationTraits, circumstances 
- * 
+ * Getting information from console such as name, date, address, imageFileName,
+ * identificationTraits, circumstances
+ *
  * @param cardInfo existing CardInfo structure
-*/
+ */
 void getCardInfoFromUser(CardInfo *cardInfo);
+
+/**
+ * Asks if user wants to add another card
+ *
+ * @return true or false
+ */
+bool inputCards();
 
 #endif

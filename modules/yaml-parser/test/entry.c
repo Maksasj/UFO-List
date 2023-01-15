@@ -18,7 +18,7 @@ int main() {
         __gcladosTest_getKeyFromYamlString_ensure_valid_output("Test for 'char* getKeyFromYamlString(char* string);'"),
         __gcladosTest_getValueFromYamlString_ensure_valid_output("Test for 'char* getValueFromYamlString(char* string);'"),
     };
-    GcladosTestSuite gcladosTestSuite0 = gcladosCreateTestSuite("/cygdrive/c/Programming/c/Ufo-list/modules/yaml-parser/test/yaml-parser.test.c", gcladosTests0, 6);
+    GcladosTestSuite gcladosTestSuite0 = gcladosCreateTestSuite("/cygdrive/c/Git/UFO-List/modules/yaml-parser/test/yaml-parser.test.c", gcladosTests0, 6);
     GcladosTestSuite gcladosTestSuites[] = {
         gcladosTestSuite0,
     };

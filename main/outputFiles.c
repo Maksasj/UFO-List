@@ -1,22 +1,9 @@
 #include "outputFiles.h"
+#include "utils.h"
 #include <string.h>
 
-void throwAllocationFailure() {
-    fprintf(stderr, "Failed to allocate memory.\n");
-    exit(-1);
-}
-
-char *getFilePath(char *outputDir, char *filename) {
-    if (outputDir == NULL) {
-        char *filePath = malloc(strlen(filename));
-
-        if (filePath == NULL) {
-            return NULL;
-        }
-
-        strcpy(filePath, filename);
-        return filePath;
-    }
+char *getFilePath(char *filename) {
+    char outputDir[] = "docs";
 
     int outputDirLen = strlen(outputDir);
     int filePathLen = outputDirLen + 1 + strlen(filename) + 1;
@@ -36,8 +23,8 @@ char *getFilePath(char *outputDir, char *filename) {
     return filePath;
 }
 
-void writeHTMLFile(Node *htmlNode, char *outputDir) {
-    char *filePath = getFilePath(outputDir, "index.html");
+void writeHTMLFile(Node *htmlNode) {
+    char *filePath = getFilePath("index.html");
 
     if (filePath == NULL) {
         throwAllocationFailure();
@@ -55,8 +42,8 @@ void writeHTMLFile(Node *htmlNode, char *outputDir) {
     free(filePath);
 }
 
-void writeCSSFile(CSS *css, char *outputDir) {
-    char *filePath = getFilePath(outputDir, "styles.css");
+void writeCSSFile(CSS *css) {
+    char *filePath = getFilePath("styles.css");
 
     if (filePath == NULL) {
         throwAllocationFailure();
@@ -72,4 +59,43 @@ void writeCSSFile(CSS *css, char *outputDir) {
     }
 
     free(filePath);
+}
+
+void writeJSFile() {
+    char *filePath = getFilePath("index.js");
+
+    if (filePath == NULL) {
+        throwAllocationFailure();
+    }
+
+    FILE *jsFile = fopen(filePath, "w");
+
+    if (jsFile != NULL) {
+        char jsText[] =
+            "function registerShowListeners(triggerId, contentId) {\n"
+            "	const triggers = document.querySelectorAll(`#${triggerId}`);\n"
+            "	const contents = document.querySelectorAll(`#${contentId}`);\n"
+            "	function trigger(element) {\n"
+            "		if (element.classList.contains(\"show\")) {\n"
+            "			element.classList.remove(\"show\");\n"
+            "		} else {\n"
+            "			element.classList.add(\"show\");\n"
+            "		}\n"
+            "	}\n"
+            "	for (let i = 0; i < triggers.length; ++i) {\n"
+            "		triggers[i].addEventListener(\"click\", () => {\n"
+            "			trigger(contents[i]);\n"
+            "		});\n"
+            "	}\n"
+            "}\n"
+
+            "registerShowListeners(\"traits-trigger\", \"traits-content\");\n"
+            "registerShowListeners(\"situation-trigger\", "
+            "\"situation-content\");\n";
+
+        fprintf(jsFile, "%s", jsText);
+
+        fclose(jsFile);
+        free(filePath);
+    }
 }

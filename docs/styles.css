@@ -4,7 +4,7 @@ body {
 }
 
 body {
-	background-image: linear-gradient(to right, rgb(0,0,0), rgb(0,0,0));
+	background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
 	display: flex;
 	justify-content: center;
 }
@@ -38,12 +38,12 @@ body {
 
 /* FIXME: 1000px may not be enough for cards container */
 #gradient {
-    height: 1000px;
+	height: 1000px;
 	width: 100%;
 	position: absolute;
 	top: 2200px;
 	z-index: -1;
-    background-image: linear-gradient(rgb(0,0,25), black);
+	background-image: linear-gradient(rgb(0, 0, 25), black);
 }
 
 .profile-photo {
