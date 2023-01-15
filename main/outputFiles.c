@@ -2,17 +2,8 @@
 #include "utils.h"
 #include <string.h>
 
-char *getFilePath(char *outputDir, char *filename) {
-    if (outputDir == NULL) {
-        char *filePath = malloc(strlen(filename) + 1);
-
-        if (filePath == NULL) {
-            return NULL;
-        }
-
-        strcpy(filePath, filename);
-        return filePath;
-    }
+char *getFilePath(char *filename) {
+    char outputDir[] = "docs";
 
     int outputDirLen = strlen(outputDir);
     int filePathLen = outputDirLen + 1 + strlen(filename) + 1;
@@ -32,8 +23,8 @@ char *getFilePath(char *outputDir, char *filename) {
     return filePath;
 }
 
-void writeHTMLFile(Node *htmlNode, char *outputDir) {
-    char *filePath = getFilePath(outputDir, "index.html");
+void writeHTMLFile(Node *htmlNode) {
+    char *filePath = getFilePath("index.html");
 
     if (filePath == NULL) {
         throwAllocationFailure();
@@ -51,8 +42,8 @@ void writeHTMLFile(Node *htmlNode, char *outputDir) {
     free(filePath);
 }
 
-void writeCSSFile(CSS *css, char *outputDir) {
-    char *filePath = getFilePath(outputDir, "styles.css");
+void writeCSSFile(CSS *css) {
+    char *filePath = getFilePath("styles.css");
 
     if (filePath == NULL) {
         throwAllocationFailure();
@@ -70,8 +61,8 @@ void writeCSSFile(CSS *css, char *outputDir) {
     free(filePath);
 }
 
-void writeJSFile(char *outputDir) {
-    char *filePath = getFilePath(outputDir, "index.js");
+void writeJSFile() {
+    char *filePath = getFilePath("index.js");
 
     if (filePath == NULL) {
         throwAllocationFailure();

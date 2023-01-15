@@ -8,13 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[]) {
-    char *outputDir = NULL;
-
-    if (argc > 1) {
-        outputDir = argv[1];
-    }
-
+int main() {
     // HTML
     Node *htmlNode = initDefaultHTMLNode();
 
@@ -58,7 +52,7 @@ int main(int argc, char *argv[]) {
 
     pushChildrenNode(body, "script", "src=\"./index.js\"");
 
-    writeHTMLFile(htmlNode, outputDir);
+    writeHTMLFile(htmlNode);
 
     // CSS
     CSS css;
@@ -66,9 +60,9 @@ int main(int argc, char *argv[]) {
 
     createCSS(&css);
 
-    writeCSSFile(&css, outputDir);
+    writeCSSFile(&css);
 
-    writeJSFile(outputDir);
+    writeJSFile();
 
     return 0;
 }
